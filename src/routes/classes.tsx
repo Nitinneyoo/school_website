@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { BookOpen, Users, Clock, Award, Target, Star, Calendar, CheckCircle } from 'lucide-react'
+import { BookOpen, Users, Clock, Award, Target, Star, CheckCircle } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -236,7 +236,7 @@ function Classes() {
                           {classInfo.description}
                         </p>
                       </CardHeader>
-                      
+
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div className="flex items-center text-sm text-gray-600">
