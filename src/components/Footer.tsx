@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <GraduationCap className="h-8 w-8 text-primary-400" />
+              <GraduationCap className="h-8 w-8 text-slate-400" />
               <span className="text-xl font-bold">Model Middle School</span>
             </div>
             <p className="text-gray-400 mb-4">
@@ -33,7 +33,7 @@ export function Footer() {
                 <a
                   key={index}
                   href={social.href}
-                  className="text-gray-400 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-slate-400 transition-colors"
                 >
                   {social.icon}
                 </a>
@@ -48,7 +48,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                    className="text-gray-400 hover:text-slate-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -61,15 +61,15 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary-400" />
+                <Phone className="h-5 w-5 text-slate-400" />
                 <span className="text-gray-400">+91 7000080870</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-primary-400" />
+                <Mail className="h-5 w-5 text-slate-400" />
                 <span className="text-gray-400">info@modelmiddle.edu</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-primary-400" />
+                <MapPin className="h-5 w-5 text-slate-400" />
                 <span className="text-gray-400">Ambedkar nagar baghedi chaKGHAT DIST REWA MP</span>
               </div>
             </div>

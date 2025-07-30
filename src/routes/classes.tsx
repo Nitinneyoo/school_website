@@ -183,7 +183,7 @@ function Classes() {
   }
 
   return (
-    <div className="py-12 bg-gray-50">
+    <div className="py-12 bg-slate-200-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -222,7 +222,7 @@ function Classes() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
-                    <Card className={`h-full hover:shadow-xl transition-all duration-300 border-2 ${classInfo.color} bg-white`}>
+                    <Card className={`h-full hover:shadow-xl transition-all duration-300 border-2 ${classInfo.color} bg-slate-200`}>
                       <CardHeader className="pb-4">
                         <div className="flex items-center justify-between mb-2">
                           <CardTitle className="text-2xl font-bold text-gray-900">
@@ -240,18 +240,18 @@ function Classes() {
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div className="flex items-center text-sm text-gray-600">
-                            <Users className="h-4 w-4 mr-2 text-primary-600" />
+                            <Users className="h-4 w-4 mr-2 text-slate-200" />
                             {classInfo.students}
                           </div>
                           <div className="flex items-center text-sm text-gray-600">
-                            <Clock className="h-4 w-4 mr-2 text-primary-600" />
+                            <Clock className="h-4 w-4 mr-2 text-slate-200" />
                             {classInfo.duration} daily
                           </div>
                         </div>
 
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Target className="h-4 w-4 mr-2 text-primary-600" />
+                            <Target className="h-4 w-4 mr-2 text-slate-200" />
                             Learning Objectives:
                           </h4>
                           <ul className="space-y-1">
@@ -266,7 +266,7 @@ function Classes() {
 
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <BookOpen className="h-4 w-4 mr-2 text-primary-600" />
+                            <BookOpen className="h-4 w-4 mr-2 text-slate-200" />
                             Subjects ({classInfo.subjects.length}):
                           </h4>
                           <div className="flex flex-wrap gap-1">
@@ -280,7 +280,7 @@ function Classes() {
 
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Star className="h-4 w-4 mr-2 text-primary-600" />
+                            <Star className="h-4 w-4 mr-2 text-slate-200" />
                             Key Activities:
                           </h4>
                           <div className="grid grid-cols-2 gap-1">
@@ -295,7 +295,7 @@ function Classes() {
 
                         <div className="pt-4 border-t">
                           <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Award className="h-4 w-4 mr-2 text-primary-600" />
+                            <Award className="h-4 w-4 mr-2 text-slate-200" />
                             Assessment Method:
                           </h4>
                           <p className="text-sm text-gray-600">{classInfo.assessment}</p>
@@ -314,29 +314,29 @@ function Classes() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 bg-white rounded-2xl p-8 shadow-lg"
+          className="mt-16 bg-slate-200 rounded-2xl p-8 shadow-lg"
         >
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Academic Excellence Statistics
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-2">98%</div>
+              <div className="text-3xl font-bold text-black mb-2">98%</div>
               <div className="text-sm text-gray-600 mb-3">Pass Rate</div>
               <Progress value={98} className="h-2" />
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-2">85%</div>
+              <div className="text-3xl font-bold text-black mb-2">85%</div>
               <div className="text-sm text-gray-600 mb-3">Distinction Rate</div>
               <Progress value={85} className="h-2" />
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-2">92%</div>
+              <div className="text-3xl font-bold text-black mb-2">92%</div>
               <div className="text-sm text-gray-600 mb-3">Student Satisfaction</div>
               <Progress value={92} className="h-2" />
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600 mb-2">96%</div>
+              <div className="text-3xl font-bold text-black mb-2">96%</div>
               <div className="text-sm text-gray-600 mb-3">Parent Satisfaction</div>
               <Progress value={96} className="h-2" />
             </div>

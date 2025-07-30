@@ -9,22 +9,22 @@ export const Route = createFileRoute('/about')({
 function About() {
   const values = [
     {
-      icon: <Award className="h-8 w-8 text-primary-600" />,
+      icon: <Award className="h-8 w-8 text-slate-200" />,
       title: "Excellence",
       description: "We strive for academic excellence in all our educational programs"
     },
     {
-      icon: <Users className="h-8 w-8 text-primary-600" />,
+      icon: <Users className="h-8 w-8 text-slate-200" />,
       title: "Community",
       description: "Building a strong, supportive community for all students and families"
     },
     {
-      icon: <Target className="h-8 w-8 text-primary-600" />,
+      icon: <Target className="h-8 w-8 text-slate-200" />,
       title: "Growth",
       description: "Fostering personal and academic growth for every student"
     },
     {
-      icon: <Heart className="h-8 w-8 text-primary-600" />,
+      icon: <Heart className="h-8 w-8 text-slate-200" />,
       title: "Care",
       description: "Providing a caring and nurturing environment for learning"
     }

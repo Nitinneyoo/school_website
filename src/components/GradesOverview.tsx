@@ -58,7 +58,7 @@ export function GradesOverview() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,10 +85,10 @@ export function GradesOverview() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className={`h-full hover:shadow-xl transition-all duration-300 border-2 ${group.color} bg-white`}>
+              <Card className={`h-full hover:shadow-xl transition-all duration-300 border-2 ${group.color} bg-slate-200`}>
                 <CardHeader className="pb-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="text-primary-600">
+                    <div className="text-slate-200">
                       {group.icon}
                     </div>
                     <Badge className={group.color}>
@@ -98,23 +98,23 @@ export function GradesOverview() {
                   <CardTitle className="text-2xl mb-2">{group.title}</CardTitle>
                   <p className="text-lg font-semibold text-gray-700">{group.subtitle}</p>
                 </CardHeader>
-                
+
                 <CardContent className="space-y-6">
                   <p className="text-gray-600 leading-relaxed">
                     {group.description}
                   </p>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-center text-sm text-gray-600">
-                      <UsersIcon className="h-4 w-4 mr-2 text-primary-600" />
+                      <UsersIcon className="h-4 w-4 mr-2 text-slate-200" />
                       {group.students}
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
-                      <Clock className="h-4 w-4 mr-2 text-primary-600" />
+                      <Clock className="h-4 w-4 mr-2 text-slate-200" />
                       {group.duration} daily
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
                     <div className="grid grid-cols-2 gap-2">
@@ -126,7 +126,7 @@ export function GradesOverview() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Subjects Covered:</h4>
                     <div className="flex flex-wrap gap-2">
@@ -149,7 +149,7 @@ export function GradesOverview() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          <div className="bg-slate-200 rounded-2xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Ready to Explore Our Academic Programs?
             </h3>

@@ -19,7 +19,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-primary-600" />
+            <GraduationCap className="h-8 w-8 text-slate-900" />
             <span className="text-2xl font-bold text-gray-900">Model Middle School</span>
           </Link>
 
@@ -28,9 +28,9 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-primary-600 transition-colors font-medium"
+                className="text-gray-700 hover:text-slate-900 transition-colors font-medium"
                 activeProps={{
-                  className: "text-primary-600 font-semibold"
+                  className: "text-slate-800 font-semibold"
                 }}
               >
                 {item.name}
@@ -40,7 +40,7 @@ export function Header() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-primary-600"
+            className="md:hidden p-2 text-gray-700 hover:text-slate-900"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -59,7 +59,7 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md"
+                className="block px-3 py-2 text-gray-700 hover:text-slate-200 hover:bg-gray-50 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

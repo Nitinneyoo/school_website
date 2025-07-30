@@ -63,10 +63,10 @@ export function ContactForm() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <Card className="shadow-lg">
+      <Card className="shadow-lg bg-slate-100">
         <CardHeader>
           <CardTitle className="text-2xl flex items-center">
-            <MessageSquare className="h-6 w-6 mr-2 text-primary-600" />
+            <MessageSquare className="h-6 w-6 mr-2 text-slate-200" />
             Send us a Message
           </CardTitle>
           <p className="text-gray-600">
@@ -162,10 +162,10 @@ export function ContactForm() {
             </Button>
           </form>
 
-          <div className="mt-6 p-4 bg-primary-50 rounded-lg">
-            <h4 className="font-semibold text-primary-800 mb-2">Quick Response Promise</h4>
-            <p className="text-sm text-primary-700">
-              We respond to all inquiries within 24 hours during business days. 
+          <div className="mt-6 p-4 bg-slate-200 rounded-lg">
+            <h4 className="font-semibold text-black mb-2">Quick Response Promise</h4>
+            <p className="text-sm text-black">
+              We respond to all inquiries within 24 hours during business days.
               For urgent matters, please call us directly at +91 9876543210.
             </p>
           </div>

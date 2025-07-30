@@ -56,8 +56,8 @@ function Contact() {
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                    <div className="text-primary-600">{info.icon}</div>
+                  <div className="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
+                    <div className="text-slate-900">{info.icon}</div>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{info.title}</h3>
@@ -71,7 +71,7 @@ function Contact() {
 
             <div className="mt-8 bg-primary-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">School Location</h3>
-              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+              <div className="bg-slate-200 rounded-lg h-64 flex items-center justify-center">
                 <p className="text-gray-600">Interactive Map Coming Soon</p>
               </div>
             </div>

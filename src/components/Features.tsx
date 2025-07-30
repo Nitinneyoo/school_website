@@ -86,7 +86,7 @@ export function Features() {
               <Card className="h-full hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-primary-600 group-hover:scale-110 transition-transform">
+                    <div className="text-slate-200 group-hover:scale-110 transition-transform">
                       {feature.icon}
                     </div>
                     <Badge variant="secondary" className="text-xs">
@@ -110,24 +110,24 @@ export function Features() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-20 bg-primary-600 rounded-2xl p-8 text-white"
+          className="mt-20 bg-slate-200 rounded-2xl p-8 text-black"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-3xl font-bold mb-2">20+</div>
-              <div className="text-primary-200">Years of Excellence</div>
+              <div className="text-slate-800">Years of Excellence</div>
             </div>
             <div>
               <div className="text-3xl font-bold mb-2">1200+</div>
-              <div className="text-primary-200">Students Enrolled</div>
+              <div className="text-slate-800">Students Enrolled</div>
             </div>
             <div>
               <div className="text-3xl font-bold mb-2">50+</div>
-              <div className="text-primary-200">Qualified Teachers</div>
+              <div className="text-slate-800">Qualified Teachers</div>
             </div>
             <div>
               <div className="text-3xl font-bold mb-2">98%</div>
-              <div className="text-primary-200">Success Rate</div>
+              <div className="text-slate-800">Success Rate</div>
             </div>
           </div>
         </motion.div>

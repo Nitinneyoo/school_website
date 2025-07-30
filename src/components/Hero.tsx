@@ -14,17 +14,17 @@ export function Hero() {
   ]
 
   return (
-    <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 text-black overflow-hidden min-h-[80vh]">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-800/50 to-transparent" />
-      
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:20px_20px]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-800/80 to-transparent" />
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, translateX: -20 }}
+            animate={{ opacity: 1, translateX: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -32,29 +32,29 @@ export function Hero() {
                 <Star className="h-4 w-4 mr-2 text-yellow-400" />
                 Rated #1 School in the District
               </Badge>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 Where
                 <span className="text-yellow-400"> Model Futures</span>
                 <br />
                 Begin Today
               </h1>
-              
-              <p className="text-xl text-primary-100 max-w-lg">
-                Excellence in education from LKG to 10th grade. Join our community of learners 
+
+              <p className="text-xl text-white max-w-lg">
+                Excellence in education from LKG to 10th grade. Join our community of learners
                 and watch your child flourish in a nurturing, innovative environment.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
+              <Button asChild size="lg" className="bg-slate-100 text-slate-800 hover:bg-slate-200 border-slate-100">
                 <Link to="/admissions">
                   Apply Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
+
+              <Button asChild variant="outline" size="lg" className="border-slate-200 text-white  hover:text-gray-400">
                 <Link to="/about">
                   Learn More
                 </Link>
@@ -66,21 +66,21 @@ export function Hero() {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                  initial={{ opacity: 0, translateY: 10 }}
+                  animate={{ opacity: 1, translateY: 0 }}
+                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                   className="text-center"
                 >
                   <div className="flex justify-center mb-2 text-yellow-400">
                     {stat.icon}
                   </div>
                   <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-sm text-primary-200">{stat.label}</div>
+                  <div className="text-sm text-white">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -89,31 +89,35 @@ export function Hero() {
           >
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=75"
                 alt="Happy students learning"
-                className="rounded-2xl shadow-2xl"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
-              
+
               {/* Floating Achievement Card */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
                 className="absolute -bottom-6 -left-6"
               >
                 <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary-600">98%</div>
+                        <div className="text-2xl font-bold text-slate-800">98%</div>
                         <div className="text-sm text-gray-600">Pass Rate</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary-600">4.9</div>
+                        <div className="text-2xl font-bold text-slate-800">4.9</div>
                         <div className="text-sm text-gray-600">Rating</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary-600">15+</div>
+                        <div className="text-2xl font-bold text-slate-800">15+</div>
                         <div className="text-sm text-gray-600">Awards</div>
                       </div>
                     </div>

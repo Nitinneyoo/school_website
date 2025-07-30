@@ -10,11 +10,10 @@ export default defineConfig({
     tanstackRouter({
       target: 'react',
       autoCodeSplitting: true,
-      routesDirectory: './src/routes', // Ensure this points to your routes folder
-      generatedRouteTree: './src/routeTree.gen.ts', // Ensure this path is correct
+      routesDirectory: './src/routes',
+      generatedRouteTree: './src/routeTree.gen.ts',
     }),
-     react(),
-
+    react(),
     tailwindcss(),
   ],
   resolve: {
@@ -22,7 +21,21 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: 'esnext',
+    minify: 'terser',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+          router: ['@tanstack/react-router'],
+        },
+      },
+    },
+  },
   optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion', '@tanstack/react-router'],
     exclude: ['lucide-react'],
   },
 });

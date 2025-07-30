@@ -77,7 +77,7 @@ function Admissions() {
               {admissionProcess.map((step, index) => (
                 <div key={index} className="flex items-start space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                    <span className="text-primary-600 font-bold">{step.step}</span>
+                    <span className="text-slate-200 font-bold">{step.step}</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
@@ -109,15 +109,15 @@ function Admissions() {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Important Dates</h3>
               <div className="space-y-2">
                 <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-primary-600" />
+                  <Calendar className="h-5 w-5 text-slate-200" />
                   <span className="text-gray-700">Application Start: March 1st</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-primary-600" />
+                  <Calendar className="h-5 w-5 text-slate-200" />
                   <span className="text-gray-700">Application Deadline: April 30th</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-primary-600" />
+                  <Calendar className="h-5 w-5 text-slate-200" />
                   <span className="text-gray-700">Academic Year Starts: June 1st</span>
                 </div>
               </div>
@@ -133,7 +133,7 @@ function Admissions() {
         >
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Fee Structure</h2>
           <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-lg shadow-md">
+            <table className="w-full bg-slate-100 rounded-lg shadow-md">
               <thead className="bg-primary-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -172,13 +172,13 @@ function Admissions() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8"
+          className="bg-slate-200 rounded-lg shadow-md p-8"
         >
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Contact for Admissions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <Phone className="h-8 w-8 text-primary-600" />
+                <Phone className="h-8 w-8 text-black" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
               <p className="text-gray-600">+91 9876543210</p>
@@ -186,7 +186,7 @@ function Admissions() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <Mail className="h-8 w-8 text-primary-600" />
+                <Mail className="h-8 w-8 text-black" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
               <p className="text-gray-600">admissions@brightfuture.edu</p>
@@ -194,7 +194,7 @@ function Admissions() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                <MapPin className="h-8 w-8 text-primary-600" />
+                <MapPin className="h-8 w-8 text-black" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Address</h3>
               <p className="text-gray-600">123 Education Street</p>
