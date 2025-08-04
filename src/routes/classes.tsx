@@ -20,6 +20,7 @@ export const Route = createFileRoute("/classes")({
 
 function Classes() {
   const classes = [
+    // ... all your class data remains the same
     {
       level: "LKG",
       age: "3-4 years",
@@ -457,17 +458,16 @@ function Classes() {
           </p>
         </motion.div>
 
-        {/* MODIFIED LINE:
-          The className is changed from "w-full lg:hidden" to "w-full hidden lg:block".
-          This hides the entire Tabs component on mobile and shows it on large screens.
-        */}
-        <Tabs defaultValue="all" className="w-full hidden lg:block">
-          <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto mb-8">
+        {/* CHANGE 1: Removed lg:hidden to make tabs visible on all screen sizes */}
+        <Tabs defaultValue="all" className="w-full">
+          {/* CHANGE 2: Made the TabsList responsive */}
+          <TabsList className="flex overflow-x-auto sm:grid sm:grid-cols-5 w-full max-w-4xl mx-auto mb-8">
             {categories.map((category) => (
               <TabsTrigger
                 key={category.id}
                 value={category.id}
-                className="text-sm"
+                // Added flex-shrink-0 to prevent tabs from shrinking on flex layout
+                className="text-sm flex-shrink-0"
               >
                 {category.name}
                 <Badge variant="secondary" className="ml-2 text-xs">
@@ -587,9 +587,6 @@ function Classes() {
             </TabsContent>
           ))}
         </Tabs>
-
-        {/* Note: You may want to add a different layout for smaller screens here */}
-        {/* For example, a simple list of all classes, which would have the class "lg:hidden" */}
 
         {/* Academic Excellence Statistics */}
         <motion.div
