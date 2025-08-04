@@ -1,0 +1,395 @@
+const __vite__mapDeps = (
+	i,
+	m = __vite__mapDeps,
+	d = m.f ||
+		(m.f = [
+			"assets/contact-DNmXdDOj.js",
+			"assets/react-vendor-Bdsktdf7.js",
+			"assets/vendor-Bf5U0V8c.js",
+			"assets/router-gCVDnvns.js",
+			"assets/ui-components-D3hghNPx.js",
+			"assets/card-Dlz6PZHa.js",
+			"assets/button-Dfs_kP17.js",
+			"assets/animations-xADR5pxy.js",
+			"assets/classes-BSv3A7jJ.js",
+			"assets/admissions-3AGRLQ72.js",
+			"assets/about-Dgz01Fwc.js",
+			"assets/index-CmnY0moY.js",
+		]),
+) => i.map((i) => d[i]);
+
+import { m as b } from "./animations-xADR5pxy.js";
+import {
+	L as a,
+	b as c,
+	T as d,
+	r as e,
+	g as f,
+	h as g,
+	O as h,
+	c as i,
+	f as j,
+	F as l,
+	I as m,
+	R as N,
+	X as n,
+	M as o,
+	e as p,
+	P as r,
+	j as s,
+	G as t,
+	l as u,
+	d as x,
+} from "./react-vendor-Bdsktdf7.js";
+import { _ as y } from "./router-gCVDnvns.js";
+import "./vendor-Bf5U0V8c.js";
+import "./ui-components-D3hghNPx.js";
+function v() {
+	const [r, c] = e.useState(!1),
+		i = [
+			{ name: "Home", href: "/" },
+			{ name: "About", href: "/about" },
+			{ name: "Classes", href: "/classes" },
+			{ name: "Admissions", href: "/admissions" },
+			{ name: "Contact", href: "/contact" },
+		];
+	return s.jsxs("header", {
+		className: "bg-white shadow-sm sticky top-0 z-50",
+		children: [
+			s.jsx("div", {
+				className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+				children: s.jsxs("div", {
+					className: "flex justify-between items-center py-4",
+					children: [
+						s.jsxs(a, {
+							to: "/",
+							className: "flex items-center space-x-2",
+							children: [
+								s.jsx(t, { className: "h-8 w-8 text-slate-900" }),
+								s.jsx("span", {
+									className: "text-2xl font-bold text-gray-900",
+									children: "Model Middle School",
+								}),
+							],
+						}),
+						s.jsx("nav", {
+							className: "hidden md:flex space-x-8",
+							children: i.map((e) =>
+								s.jsx(
+									a,
+									{
+										to: e.href,
+										className:
+											"text-gray-700 hover:text-slate-900 transition-colors font-medium",
+										activeProps: { className: "text-slate-800 font-semibold" },
+										children: e.name,
+									},
+									e.name,
+								),
+							),
+						}),
+						s.jsx("button", {
+							onClick: () => c(!r),
+							className: "md:hidden p-2 text-gray-700 hover:text-slate-900",
+							children: r
+								? s.jsx(n, { className: "h-6 w-6" })
+								: s.jsx(o, { className: "h-6 w-6" }),
+						}),
+					],
+				}),
+			}),
+			r &&
+				s.jsx(b.div, {
+					initial: { opacity: 0, y: -10 },
+					animate: { opacity: 1, y: 0 },
+					exit: { opacity: 0, y: -10 },
+					className: "md:hidden bg-white border-t",
+					children: s.jsx("div", {
+						className: "px-4 py-2 space-y-1",
+						children: i.map((e) =>
+							s.jsx(
+								a,
+								{
+									to: e.href,
+									className:
+										"block px-3 py-2 text-gray-700 hover:text-slate-200 hover:bg-gray-50 rounded-md",
+									onClick: () => c(!1),
+									children: e.name,
+								},
+								e.name,
+							),
+						),
+					}),
+				}),
+		],
+	});
+}
+function _() {
+	const e = [
+		{ icon: s.jsx(l, { className: "h-5 w-5" }), href: "#" },
+		{ icon: s.jsx(d, { className: "h-5 w-5" }), href: "#" },
+		{ icon: s.jsx(m, { className: "h-5 w-5" }), href: "#" },
+	];
+	return s.jsx("footer", {
+		className: "bg-gray-900 text-white",
+		children: s.jsxs("div", {
+			className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12",
+			children: [
+				s.jsxs("div", {
+					className: "grid grid-cols-1 md:grid-cols-4 gap-8",
+					children: [
+						s.jsxs("div", {
+							children: [
+								s.jsxs("div", {
+									className: "flex items-center space-x-2 mb-4",
+									children: [
+										s.jsx(t, { className: "h-8 w-8 text-slate-400" }),
+										s.jsx("span", {
+											className: "text-xl font-bold",
+											children: "Model Middle School",
+										}),
+									],
+								}),
+								s.jsx("p", {
+									className: "text-gray-400 mb-4",
+									children:
+										"Nurturing young minds from LKG to 10th grade with excellence, innovation, and care.",
+								}),
+								s.jsx("div", {
+									className: "flex space-x-4",
+									children: e.map((e, a) =>
+										s.jsx(
+											"a",
+											{
+												href: e.href,
+												className:
+													"text-gray-400 hover:text-slate-400 transition-colors",
+												children: e.icon,
+											},
+											a,
+										),
+									),
+								}),
+							],
+						}),
+						s.jsxs("div", {
+							children: [
+								s.jsx("h3", {
+									className: "text-lg font-semibold mb-4",
+									children: "Quick Links",
+								}),
+								s.jsx("ul", {
+									className: "space-y-2",
+									children: [
+										{ name: "Home", href: "/" },
+										{ name: "About", href: "/about" },
+										{ name: "Classes", href: "/classes" },
+										{ name: "Admissions", href: "/admissions" },
+										{ name: "Contact", href: "/contact" },
+									].map((e) =>
+										s.jsx(
+											"li",
+											{
+												children: s.jsx(a, {
+													to: e.href,
+													className:
+														"text-gray-400 hover:text-slate-400 transition-colors",
+													children: e.name,
+												}),
+											},
+											e.name,
+										),
+									),
+								}),
+							],
+						}),
+						s.jsxs("div", {
+							children: [
+								s.jsx("h3", {
+									className: "text-lg font-semibold mb-4",
+									children: "Contact Info",
+								}),
+								s.jsxs("div", {
+									className: "space-y-3",
+									children: [
+										s.jsxs("div", {
+											className: "flex items-center space-x-3",
+											children: [
+												s.jsx(r, { className: "h-5 w-5 text-slate-400" }),
+												s.jsx("span", {
+													className: "text-gray-400",
+													children: "+91 7000080870",
+												}),
+											],
+										}),
+										s.jsxs("div", {
+											className: "flex items-center space-x-3",
+											children: [
+												s.jsx(c, { className: "h-5 w-5 text-slate-400" }),
+												s.jsx("span", {
+													className: "text-gray-400",
+													children: "info@modelmiddle.edu",
+												}),
+											],
+										}),
+										s.jsxs("div", {
+											className: "flex items-center space-x-3",
+											children: [
+												s.jsx(i, { className: "h-5 w-5 text-slate-400" }),
+												s.jsx("span", {
+													className: "text-gray-400",
+													children:
+														"Ambedkar nagar baghedi chaKGHAT DIST REWA MP",
+												}),
+											],
+										}),
+									],
+								}),
+							],
+						}),
+						s.jsxs("div", {
+							children: [
+								s.jsx("h3", {
+									className: "text-lg font-semibold mb-4",
+									children: "School Hours",
+								}),
+								s.jsxs("div", {
+									className: "space-y-2 text-gray-400",
+									children: [
+										s.jsx("p", {
+											children: "Monday - Friday: 8:00 AM - 4:00 PM",
+										}),
+										s.jsx("p", { children: "Saturday: 9:00 AM - 1:00 PM" }),
+										s.jsx("p", { children: "Sunday: Closed" }),
+									],
+								}),
+							],
+						}),
+					],
+				}),
+				s.jsx("div", {
+					className:
+						"border-t border-gray-800 mt-8 pt-8 text-center text-gray-400",
+					children: s.jsx("p", {
+						children: "© 2025 Model Middle School. All rights reserved.",
+					}),
+				}),
+			],
+		}),
+	});
+}
+!(() => {
+	const e = document.createElement("link").relList;
+	if (!(e && e.supports && e.supports("modulepreload"))) {
+		for (const e of document.querySelectorAll('link[rel="modulepreload"]'))
+			s(e);
+		new MutationObserver((e) => {
+			for (const a of e)
+				if ("childList" === a.type)
+					for (const e of a.addedNodes)
+						"LINK" === e.tagName && "modulepreload" === e.rel && s(e);
+		}).observe(document, { childList: !0, subtree: !0 });
+	}
+	function s(e) {
+		if (e.ep) return;
+		e.ep = !0;
+		const s = ((e) => {
+			const s = {};
+			return (
+				e.integrity && (s.integrity = e.integrity),
+				e.referrerPolicy && (s.referrerPolicy = e.referrerPolicy),
+				"use-credentials" === e.crossOrigin
+					? (s.credentials = "include")
+					: "anonymous" === e.crossOrigin
+						? (s.credentials = "omit")
+						: (s.credentials = "same-origin"),
+				s
+			);
+		})(e);
+		fetch(e.href, s);
+	}
+})();
+const w = x({
+		component: () =>
+			s.jsxs("div", {
+				className: "min-h-screen bg-gray-50 font-inter",
+				children: [
+					s.jsx(v, {}),
+					s.jsx("main", {
+						className: "min-h-[calc(100vh-160px)]",
+						children: s.jsx(h, {}),
+					}),
+					s.jsx(_, {}),
+					s.jsx(p, {}),
+				],
+			}),
+	}),
+	A = j("/contact")({
+		component: u(
+			() =>
+				y(
+					() => import("./contact-DNmXdDOj.js"),
+					__vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7]),
+				),
+			"component",
+		),
+	}),
+	P = j("/classes")({
+		component: u(
+			() =>
+				y(
+					() => import("./classes-BSv3A7jJ.js"),
+					__vite__mapDeps([8, 1, 2, 3, 4, 5, 7]),
+				),
+			"component",
+		),
+	}),
+	R = j("/admissions")({
+		component: u(
+			() =>
+				y(
+					() => import("./admissions-3AGRLQ72.js"),
+					__vite__mapDeps([9, 1, 2, 3, 4, 7]),
+				),
+			"component",
+		),
+	}),
+	M = j("/about")({
+		component: u(
+			() =>
+				y(
+					() => import("./about-Dgz01Fwc.js"),
+					__vite__mapDeps([10, 1, 2, 3, 4, 7]),
+				),
+			"component",
+		),
+	}),
+	E = j("/")({
+		component: u(
+			() =>
+				y(
+					() => import("./index-CmnY0moY.js"),
+					__vite__mapDeps([11, 3, 2, 1, 4]),
+				),
+			"component",
+		),
+	}),
+	L = A.update({ id: "/contact", path: "/contact", getParentRoute: () => w }),
+	C = P.update({ id: "/classes", path: "/classes", getParentRoute: () => w }),
+	I = R.update({
+		id: "/admissions",
+		path: "/admissions",
+		getParentRoute: () => w,
+	}),
+	S = M.update({ id: "/about", path: "/about", getParentRoute: () => w }),
+	T = {
+		IndexRoute: E.update({ id: "/", path: "/", getParentRoute: () => w }),
+		AboutRoute: S,
+		AdmissionsRoute: I,
+		ClassesRoute: C,
+		ContactRoute: L,
+	},
+	k = f({ routeTree: w._addFileChildren(T)._addFileTypes() });
+g.createRoot(document.getElementById("root")).render(
+	s.jsx(e.StrictMode, { children: s.jsx(N, { router: k }) }),
+);
