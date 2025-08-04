@@ -1,17 +1,40 @@
-import { motion } from 'framer-motion'
-import { Link } from '@tanstack/react-router'
-import { ArrowRight, Star, Users, Trophy, BookOpen, MapPin } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
+import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BookOpen,
+  MapPin,
+  Star,
+  Trophy,
+  Users,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function Hero() {
   const stats = [
-    { icon: <Users className="h-5 w-5" />, value: "1200+", label: "Happy Students" },
-    { icon: <BookOpen className="h-5 w-5" />, value: "50+", label: "Expert Teachers" },
-    { icon: <Trophy className="h-5 w-5" />, value: "95%", label: "Success Rate" },
-    { icon: <MapPin className="h-5 w-5" />, value: "23+", label: "Years Experience" },
-  ]
+    {
+      icon: <Users className="h-5 w-5" />,
+      value: "1200+",
+      label: "Happy Students",
+    },
+    {
+      icon: <BookOpen className="h-5 w-5" />,
+      value: "50+",
+      label: "Expert Teachers",
+    },
+    {
+      icon: <Trophy className="h-5 w-5" />,
+      value: "95%",
+      label: "Success Rate",
+    },
+    {
+      icon: <MapPin className="h-5 w-5" />,
+      value: "23+",
+      label: "Years Experience",
+    },
+  ];
 
   return (
     <section className="relative bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 text-black overflow-hidden min-h-[80vh]">
@@ -28,7 +51,10 @@ export function Hero() {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30"
+              >
                 <Star className="h-4 w-4 mr-2 text-yellow-400" />
                 Rated #1 School in the District
               </Badge>
@@ -41,23 +67,31 @@ export function Hero() {
               </h1>
 
               <p className="text-xl text-white max-w-lg">
-                Excellence in education from LKG to 10th grade. Join our community of learners
-                and watch your child flourish in a nurturing, innovative environment.
+                Excellence in education from LKG to 10th grade. Join our
+                community of learners and watch your child flourish in a
+                nurturing, innovative environment.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-slate-100 text-slate-800 hover:bg-slate-200 border-slate-100">
+              <Button
+                asChild
+                size="lg"
+                className="bg-slate-100 text-slate-800 hover:bg-slate-200 border-slate-100"
+              >
                 <Link to="/admissions">
                   Apply Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
 
-              <Button asChild variant="outline" size="lg" className="border-slate-200 text-white  hover:text-gray-400">
-                <Link to="/about">
-                  Learn More
-                </Link>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-slate-100 text-slate-800 hover:bg-slate-200 bg-slate-100"
+              >
+                <Link to="/about">Learn More</Link>
               </Button>
             </div>
 
@@ -109,15 +143,21 @@ export function Hero() {
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-slate-800">98%</div>
+                        <div className="text-2xl font-bold text-slate-800">
+                          98%
+                        </div>
                         <div className="text-sm text-gray-600">Pass Rate</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-slate-800">4.9</div>
+                        <div className="text-2xl font-bold text-slate-800">
+                          4.9
+                        </div>
                         <div className="text-sm text-gray-600">Rating</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-slate-800">15+</div>
+                        <div className="text-2xl font-bold text-slate-800">
+                          15+
+                        </div>
                         <div className="text-sm text-gray-600">Awards</div>
                       </div>
                     </div>
@@ -129,5 +169,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

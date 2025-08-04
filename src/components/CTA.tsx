@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { Link } from '@tanstack/react-router'
-import { ArrowRight, Phone } from 'lucide-react'
+import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { ArrowRight, Phone } from "lucide-react";
 
 export function CTA() {
   return (
@@ -12,9 +12,12 @@ export function CTA() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl font-bold mb-4">Ready to Join Our School Family?</h2>
+          <h2 className="text-4xl font-bold mb-4">
+            Ready to Join Our School Family?
+          </h2>
           <p className="text-xl text-slate-900 mb-8 max-w-3xl mx-auto">
-            Give your child the best foundation for their future. Applications are now open for the next academic year.
+            Give your child the best foundation for their future. Applications
+            are now open for the next academic year.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -35,5 +38,5 @@ export function CTA() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

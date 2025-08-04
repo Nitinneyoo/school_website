@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import { Link } from '@tanstack/react-router'
-import { Menu, X, GraduationCap } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { GraduationCap, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./ui/button";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Classes', href: '/classes' },
-    { name: 'Admissions', href: '/admissions' },
-    { name: 'Contact', href: '/contact' },
-  ]
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Classes", href: "/classes" },
+    { name: "Admissions", href: "/admissions" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -20,7 +21,9 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-slate-900" />
-            <span className="text-2xl font-bold text-gray-900">Model Middle School</span>
+            <span className="text-2xl font-bold text-gray-900">
+              Model Middle School
+            </span>
           </Link>
 
           <nav className="hidden md:flex space-x-8">
@@ -30,7 +33,7 @@ export function Header() {
                 to={item.href}
                 className="text-gray-700 hover:text-slate-900 transition-colors font-medium"
                 activeProps={{
-                  className: "text-slate-800 font-semibold"
+                  className: "text-slate-800 font-semibold",
                 }}
               >
                 {item.name}
@@ -38,12 +41,16 @@ export function Header() {
             ))}
           </nav>
 
-          <button
+          <Button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-gray-700 hover:text-slate-900"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
         </div>
       </div>
 
@@ -69,5 +76,5 @@ export function Header() {
         </motion.div>
       )}
     </header>
-  )
+  );
 }

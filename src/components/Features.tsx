@@ -1,59 +1,76 @@
-import { motion } from 'framer-motion'
-import { BookOpen, Users, Trophy, Heart, Globe, Zap, Shield, Award } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { motion } from "framer-motion";
+import {
+  Award,
+  BookOpen,
+  Globe,
+  Heart,
+  Shield,
+  Trophy,
+  Users,
+  Zap,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function Features() {
   const features = [
     {
       icon: <BookOpen className="h-8 w-8" />,
       title: "Quality Education",
-      description: "Comprehensive curriculum designed to foster academic excellence and critical thinking skills.",
-      badge: "Academic"
+      description:
+        "Comprehensive curriculum designed to foster academic excellence and critical thinking skills.",
+      badge: "Academic",
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: "Expert Teachers",
-      description: "Dedicated and qualified educators with years of experience in their respective fields.",
-      badge: "Faculty"
+      description:
+        "Dedicated and qualified educators with years of experience in their respective fields.",
+      badge: "Faculty",
     },
     {
       icon: <Trophy className="h-8 w-8" />,
       title: "Academic Excellence",
-      description: "Consistently high performance in board exams and competitive assessments.",
-      badge: "Achievement"
+      description:
+        "Consistently high performance in board exams and competitive assessments.",
+      badge: "Achievement",
     },
     {
       icon: <Heart className="h-8 w-8" />,
       title: "Caring Environment",
-      description: "Safe, inclusive, and supportive atmosphere where every child feels valued and nurtured.",
-      badge: "Culture"
+      description:
+        "Safe, inclusive, and supportive atmosphere where every child feels valued and nurtured.",
+      badge: "Culture",
     },
     {
       icon: <Globe className="h-8 w-8" />,
       title: "Holistic Development",
-      description: "Focus on overall personality development through academics, sports, arts, and life skills.",
-      badge: "Development"
+      description:
+        "Focus on overall personality development through academics, sports, arts, and life skills.",
+      badge: "Development",
     },
     {
       icon: <Zap className="h-8 w-8" />,
       title: "Modern Facilities",
-      description: "State-of-the-art infrastructure with smart classrooms, laboratories, and technology integration.",
-      badge: "Infrastructure"
+      description:
+        "State-of-the-art infrastructure with smart classrooms, laboratories, and technology integration.",
+      badge: "Infrastructure",
     },
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Safety First",
-      description: "Comprehensive safety measures with CCTV monitoring, security guards, and emergency protocols.",
-      badge: "Security"
+      description:
+        "Comprehensive safety measures with CCTV monitoring, security guards, and emergency protocols.",
+      badge: "Security",
     },
     {
       icon: <Award className="h-8 w-8" />,
       title: "Recognition",
-      description: "Multiple awards and certifications for educational excellence and student achievements.",
-      badge: "Awards"
-    }
-  ]
+      description:
+        "Multiple awards and certifications for educational excellence and student achievements.",
+      badge: "Awards",
+    },
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
@@ -71,7 +88,8 @@ export function Features() {
             Excellence in Every Aspect
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We provide the perfect environment for your child's growth and development with our comprehensive approach to education
+            We provide the perfect environment for your child's growth and
+            development with our comprehensive approach to education
           </p>
         </motion.div>
 
@@ -133,5 +151,5 @@ export function Features() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
