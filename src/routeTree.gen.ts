@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,27 @@ export interface FileRoutesById {
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/results': typeof ResultsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/admissions' | '/classes' | '/contact'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/classes'
+    | '/contact'
+    | '/results'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/admissions' | '/classes' | '/contact'
-  id: '__root__' | '/' | '/about' | '/admissions' | '/classes' | '/contact'
+  to: '/' | '/about' | '/admissions' | '/classes' | '/contact' | '/results'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/classes'
+    | '/contact'
+    | '/results'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +99,18 @@ export interface RootRouteChildren {
   AdmissionsRoute: typeof AdmissionsRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
+  ResultsRoute: typeof ResultsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -125,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionsRoute: AdmissionsRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
+  ResultsRoute: ResultsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
