@@ -9,14 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TeacherRouteImport } from './routes/teacher'
 import { Route as ResultssRouteImport } from './routes/resultss'
 import { Route as ResultsRouteImport } from './routes/results'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeacherIndexRouteImport } from './routes/teacher/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as TeacherUploadRouteImport } from './routes/teacher/upload'
+import { Route as TeacherMyUploadsRouteImport } from './routes/teacher/my-uploads'
+import { Route as AdminTeachersRouteImport } from './routes/admin/teachers'
+import { Route as AdminActivityRouteImport } from './routes/admin/activity'
 
+const TeacherRoute = TeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultssRoute = ResultssRouteImport.update({
   id: '/resultss',
   path: '/resultss',
@@ -25,6 +40,16 @@ const ResultssRoute = ResultssRouteImport.update({
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -42,6 +67,11 @@ const AdmissionsRoute = AdmissionsRouteImport.update({
   path: '/admissions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -52,15 +82,55 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeacherIndexRoute = TeacherIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TeacherRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const TeacherUploadRoute = TeacherUploadRouteImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => TeacherRoute,
+} as any)
+const TeacherMyUploadsRoute = TeacherMyUploadsRouteImport.update({
+  id: '/my-uploads',
+  path: '/my-uploads',
+  getParentRoute: () => TeacherRoute,
+} as any)
+const AdminTeachersRoute = AdminTeachersRouteImport.update({
+  id: '/teachers',
+  path: '/teachers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminActivityRoute = AdminActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/login': typeof LoginRoute
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
+  '/teacher': typeof TeacherRouteWithChildren
+  '/admin/activity': typeof AdminActivityRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/teacher/my-uploads': typeof TeacherMyUploadsRoute
+  '/teacher/upload': typeof TeacherUploadRoute
+  '/admin/': typeof AdminIndexRoute
+  '/teacher/': typeof TeacherIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -68,29 +138,57 @@ export interface FileRoutesByTo {
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/login': typeof LoginRoute
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
+  '/admin/activity': typeof AdminActivityRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/teacher/my-uploads': typeof TeacherMyUploadsRoute
+  '/teacher/upload': typeof TeacherUploadRoute
+  '/admin': typeof AdminIndexRoute
+  '/teacher': typeof TeacherIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admissions': typeof AdmissionsRoute
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
+  '/games': typeof GamesRoute
+  '/login': typeof LoginRoute
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
+  '/teacher': typeof TeacherRouteWithChildren
+  '/admin/activity': typeof AdminActivityRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/teacher/my-uploads': typeof TeacherMyUploadsRoute
+  '/teacher/upload': typeof TeacherUploadRoute
+  '/admin/': typeof AdminIndexRoute
+  '/teacher/': typeof TeacherIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/admissions'
     | '/classes'
     | '/contact'
+    | '/games'
+    | '/login'
     | '/results'
     | '/resultss'
+    | '/teacher'
+    | '/admin/activity'
+    | '/admin/teachers'
+    | '/teacher/my-uploads'
+    | '/teacher/upload'
+    | '/admin/'
+    | '/teacher/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -98,31 +196,60 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/classes'
     | '/contact'
+    | '/games'
+    | '/login'
     | '/results'
     | '/resultss'
+    | '/admin/activity'
+    | '/admin/teachers'
+    | '/teacher/my-uploads'
+    | '/teacher/upload'
+    | '/admin'
+    | '/teacher'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/admissions'
     | '/classes'
     | '/contact'
+    | '/games'
+    | '/login'
     | '/results'
     | '/resultss'
+    | '/teacher'
+    | '/admin/activity'
+    | '/admin/teachers'
+    | '/teacher/my-uploads'
+    | '/teacher/upload'
+    | '/admin/'
+    | '/teacher/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AdmissionsRoute: typeof AdmissionsRoute
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
+  GamesRoute: typeof GamesRoute
+  LoginRoute: typeof LoginRoute
   ResultsRoute: typeof ResultsRoute
   ResultssRoute: typeof ResultssRoute
+  TeacherRoute: typeof TeacherRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/teacher': {
+      id: '/teacher'
+      path: '/teacher'
+      fullPath: '/teacher'
+      preLoaderRoute: typeof TeacherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resultss': {
       id: '/resultss'
       path: '/resultss'
@@ -135,6 +262,20 @@ declare module '@tanstack/react-router' {
       path: '/results'
       fullPath: '/results'
       preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -158,6 +299,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -172,17 +320,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teacher/': {
+      id: '/teacher/'
+      path: '/'
+      fullPath: '/teacher/'
+      preLoaderRoute: typeof TeacherIndexRouteImport
+      parentRoute: typeof TeacherRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/teacher/upload': {
+      id: '/teacher/upload'
+      path: '/upload'
+      fullPath: '/teacher/upload'
+      preLoaderRoute: typeof TeacherUploadRouteImport
+      parentRoute: typeof TeacherRoute
+    }
+    '/teacher/my-uploads': {
+      id: '/teacher/my-uploads'
+      path: '/my-uploads'
+      fullPath: '/teacher/my-uploads'
+      preLoaderRoute: typeof TeacherMyUploadsRouteImport
+      parentRoute: typeof TeacherRoute
+    }
+    '/admin/teachers': {
+      id: '/admin/teachers'
+      path: '/teachers'
+      fullPath: '/admin/teachers'
+      preLoaderRoute: typeof AdminTeachersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/activity': {
+      id: '/admin/activity'
+      path: '/activity'
+      fullPath: '/admin/activity'
+      preLoaderRoute: typeof AdminActivityRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminActivityRoute: typeof AdminActivityRoute
+  AdminTeachersRoute: typeof AdminTeachersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminActivityRoute: AdminActivityRoute,
+  AdminTeachersRoute: AdminTeachersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface TeacherRouteChildren {
+  TeacherMyUploadsRoute: typeof TeacherMyUploadsRoute
+  TeacherUploadRoute: typeof TeacherUploadRoute
+  TeacherIndexRoute: typeof TeacherIndexRoute
+}
+
+const TeacherRouteChildren: TeacherRouteChildren = {
+  TeacherMyUploadsRoute: TeacherMyUploadsRoute,
+  TeacherUploadRoute: TeacherUploadRoute,
+  TeacherIndexRoute: TeacherIndexRoute,
+}
+
+const TeacherRouteWithChildren =
+  TeacherRoute._addFileChildren(TeacherRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   AdmissionsRoute: AdmissionsRoute,
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
+  GamesRoute: GamesRoute,
+  LoginRoute: LoginRoute,
   ResultsRoute: ResultsRoute,
   ResultssRoute: ResultssRoute,
+  TeacherRoute: TeacherRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

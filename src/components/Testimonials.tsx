@@ -27,7 +27,7 @@ export function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-slate-100">
+    <section className="py-20 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export function Testimonials() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-slate-200 rounded-lg shadow-md p-6 relative"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 relative hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-teal-400"
             >
               <Quote className="h-8 w-8 text-slate-200 absolute top-4 right-4" />
               <div className="flex items-center mb-4">

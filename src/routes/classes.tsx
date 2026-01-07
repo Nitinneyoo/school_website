@@ -1,630 +1,317 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import {
-  Award,
-  BookOpen,
-  CheckCircle,
-  Clock,
-  Star,
-  Target,
-  Users,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { BookOpen, Palette, Calculator, Beaker, Globe, Music, Trophy, Sparkles, Users, Clock, ArrowLeft, Baby, User, GraduationCap } from 'lucide-react';
 
-export const Route = createFileRoute("/classes")({
-  component: Classes,
+export const Route = createFileRoute('/classes')({
+  component: ClassesPage,
 });
 
-function Classes() {
+function ClassesPage() {
+  const [selectedClass, setSelectedClass] = useState<number | null>(null);
+
   const classes = [
-    // ... all your class data remains the same
-    {
-      level: "LKG",
-      age: "3-4 years",
-      category: "pre-primary",
-      description:
-        "Foundation learning through play-based activities and sensory development",
-      subjects: [
-        "Basic English",
-        "Numbers 1-10",
-        "Colors & Shapes",
-        "Rhymes & Songs",
-        "Art & Craft",
-        "Physical Activities",
-      ],
-      students: "15-20 per class",
-      duration: "3 hours",
-      color: "bg-red-100 text-red-800 border-red-200",
-      objectives: [
-        "Develop motor skills",
-        "Social interaction",
-        "Basic language skills",
-        "Creative expression",
-      ],
-      activities: [
-        "Story telling",
-        "Drawing & coloring",
-        "Music & dance",
-        "Outdoor play",
-      ],
-      assessment: "Continuous observation and activity-based evaluation",
+    { 
+      grade: 'LKG', 
+      color: 'from-red-500 to-pink-500', 
+      icon: Palette,
+      fullName: 'Lower Kindergarten',
+      age: '3-4 years',
+      students: '15-20 per class',
+      duration: '3-4 hours',
+      subjects: ['Basic English', 'Numbers', 'Colors', 'Rhymes', 'Art & Craft'],
+      description: 'Foundation learning through play-based activities focusing on motor skills and social development.',
+      features: ['Play-based Learning', 'Motor Skills', 'Social Skills', 'Creative Expression'],
     },
-    {
-      level: "UKG",
-      age: "4-5 years",
-      category: "pre-primary",
-      description:
-        "Pre-primary education with structured learning and school readiness preparation",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Environmental Science",
-        "Art & Craft",
-        "Physical Education",
-        "Moral Science",
-      ],
-      students: "15-20 per class",
-      duration: "4 hours",
-      color: "bg-orange-100 text-orange-800 border-orange-200",
-      objectives: [
-        "School readiness",
-        "Basic reading & writing",
-        "Number concepts",
-        "Independence skills",
-      ],
-      activities: [
-        "Phonics learning",
-        "Pattern recognition",
-        "Group activities",
-        "Field trips",
-      ],
-      assessment: "Portfolio assessment and skill-based evaluation",
+    { 
+      grade: 'UKG', 
+      color: 'from-orange-500 to-amber-500', 
+      icon: Music,
+      fullName: 'Upper Kindergarten',
+      age: '4-5 years',
+      students: '15-20 per class',
+      duration: '3-4 hours',
+      subjects: ['English', 'Numbers', 'Colors', 'Rhymes', 'Art & Craft', 'Basic Writing'],
+      description: 'Pre-school education preparing children for formal schooling with structured activities.',
+      features: ['School Readiness', 'Basic Literacy', 'Number Recognition', 'Fine Motor Skills'],
     },
-    {
-      level: "1st Grade",
-      age: "5-6 years",
-      category: "primary",
-      description:
-        "Beginning of formal education with focus on fundamental learning skills",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer Basics",
-        "Art",
-      ],
-      students: "20-25 per class",
-      duration: "5 hours",
-      color: "bg-yellow-100 text-yellow-800 border-yellow-200",
-      objectives: [
-        "Reading fluency",
-        "Basic math operations",
-        "Scientific observation",
-        "Social awareness",
-      ],
-      activities: [
-        "Reading sessions",
-        "Math games",
-        "Science experiments",
-        "Cultural programs",
-      ],
-      assessment: "Continuous and comprehensive evaluation (CCE)",
+    { 
+      grade: 'Class 1', 
+      color: 'from-yellow-500 to-lime-500', 
+      icon: BookOpen,
+      fullName: 'Class 1',
+      age: '5-6 years',
+      students: '20-25 per class',
+      duration: '5-6 hours',
+      subjects: ['English', 'Mathematics', 'EVS', 'Hindi', 'Computer', 'Art', 'Sports'],
+      description: 'Beginning formal education with focus on reading, writing, and basic arithmetic.',
+      features: ['Reading Fundamentals', 'Basic Math', 'Environmental Studies', 'Language Development'],
     },
-    {
-      level: "2nd Grade",
-      age: "6-7 years",
-      category: "primary",
-      description:
-        "Building fundamental skills with increased academic focus and conceptual understanding",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Physical Education",
-      ],
-      students: "20-25 per class",
-      duration: "5 hours",
-      color: "bg-green-100 text-green-800 border-green-200",
-      objectives: [
-        "Vocabulary building",
-        "Problem solving",
-        "Critical thinking",
-        "Team work",
-      ],
-      activities: [
-        "Creative writing",
-        "Math competitions",
-        "Science projects",
-        "Sports activities",
-      ],
-      assessment: "Unit tests and project-based assessment",
+    { 
+      grade: 'Class 2', 
+      color: 'from-green-500 to-emerald-500', 
+      icon: Beaker,
+      fullName: 'Class 2',
+      age: '6-7 years',
+      students: '20-25 per class',
+      duration: '5-6 hours',
+      subjects: ['English', 'Mathematics', 'EVS', 'Hindi', 'Computer', 'Art', 'Sports'],
+      description: 'Building on foundational skills with more complex reading and mathematical concepts.',
+      features: ['Advanced Reading', 'Problem Solving', 'Science Basics', 'Communication Skills'],
     },
-    {
-      level: "3rd Grade",
-      age: "7-8 years",
-      category: "primary",
-      description:
-        "Developing reading, writing, and analytical skills with subject-specific learning",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Art & Craft",
-      ],
-      students: "25-30 per class",
-      duration: "6 hours",
-      color: "bg-blue-100 text-blue-800 border-blue-200",
-      objectives: [
-        "Advanced reading",
-        "Mathematical reasoning",
-        "Scientific method",
-        "Cultural knowledge",
-      ],
-      activities: [
-        "Library sessions",
-        "Science fair",
-        "Cultural events",
-        "Field studies",
-      ],
-      assessment: "Formative and summative assessments",
+    { 
+      grade: 'Class 3', 
+      color: 'from-teal-500 to-cyan-500', 
+      icon: Globe,
+      fullName: 'Class 3',
+      age: '7-8 years',
+      students: '20-25 per class',
+      duration: '5-6 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Introduction to separate science and social studies with enhanced analytical thinking.',
+      features: ['Critical Thinking', 'Scientific Method', 'Geography Basics', 'Creative Writing'],
     },
-    {
-      level: "4th Grade",
-      age: "8-9 years",
-      category: "primary",
-      description:
-        "Expanding knowledge base and developing critical thinking abilities",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Environmental Studies",
-      ],
-      students: "25-30 per class",
-      duration: "6 hours",
-      color: "bg-indigo-100 text-indigo-800 border-indigo-200",
-      objectives: [
-        "Advanced concepts",
-        "Research skills",
-        "Presentation abilities",
-        "Leadership qualities",
-      ],
-      activities: [
-        "Research projects",
-        "Debate competitions",
-        "Science olympiad",
-        "Community service",
-      ],
-      assessment: "Comprehensive evaluation with practical assessments",
+    { 
+      grade: 'Class 4', 
+      color: 'from-blue-500 to-indigo-500', 
+      icon: Calculator,
+      fullName: 'Class 4',
+      age: '8-9 years',
+      students: '20-25 per class',
+      duration: '5-6 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Advanced primary education with deeper exploration of subjects and concepts.',
+      features: ['Advanced Mathematics', 'Experiments', 'History & Civics', 'Research Skills'],
     },
-    {
-      level: "5th Grade",
-      age: "9-10 years",
-      category: "primary",
-      description:
-        "Preparing for middle school with advanced curriculum and life skills",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Life Skills",
-      ],
-      students: "25-30 per class",
-      duration: "6 hours",
-      color: "bg-purple-100 text-purple-800 border-purple-200",
-      objectives: [
-        "Academic excellence",
-        "Self-confidence",
-        "Time management",
-        "Goal setting",
-      ],
-      activities: [
-        "Leadership programs",
-        "Inter-school competitions",
-        "Community projects",
-        "Career guidance",
-      ],
-      assessment: "Board preparation with mock tests",
+    { 
+      grade: 'Class 5', 
+      color: 'from-purple-500 to-violet-500', 
+      icon: Trophy,
+      fullName: 'Class 5',
+      age: '9-10 years',
+      students: '20-25 per class',
+      duration: '5-6 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Culmination of primary education preparing students for middle school challenges.',
+      features: ['Leadership Skills', 'Independent Study', 'Project Work', 'Presentation Skills'],
     },
-    {
-      level: "6th Grade",
-      age: "10-11 years",
-      category: "middle",
-      description:
-        "Introduction to middle school subjects with specialized teachers and advanced concepts",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Art",
-        "Physical Education",
-      ],
-      students: "30-35 per class",
-      duration: "7 hours",
-      color: "bg-pink-100 text-pink-800 border-pink-200",
-      objectives: [
-        "Subject mastery",
-        "Analytical thinking",
-        "Independent learning",
-        "Peer collaboration",
-      ],
-      activities: [
-        "Science lab work",
-        "Math clubs",
-        "Literary societies",
-        "Sports tournaments",
-      ],
-      assessment: "Subject-wise evaluation and practical assessments",
+    { 
+      grade: 'Class 6', 
+      color: 'from-pink-500 to-fuchsia-500', 
+      icon: BookOpen,
+      fullName: 'Class 6',
+      age: '10-11 years',
+      students: '25-30 per class',
+      duration: '6-7 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Beginning of middle school with specialized subject teachers and deeper curriculum.',
+      features: ['Critical Analysis', 'Subject Depth', 'Lab Work', 'Group Projects'],
     },
-    {
-      level: "7th Grade",
-      age: "11-12 years",
-      category: "middle",
-      description:
-        "Advanced middle school curriculum with focus on conceptual understanding",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Art",
-        "Optional Language",
-      ],
-      students: "30-35 per class",
-      duration: "7 hours",
-      color: "bg-teal-100 text-teal-800 border-teal-200",
-      objectives: [
-        "Conceptual clarity",
-        "Problem-solving skills",
-        "Creative expression",
-        "Social responsibility",
-      ],
-      activities: [
-        "Science exhibitions",
-        "Math olympiad",
-        "Drama productions",
-        "Environmental projects",
-      ],
-      assessment: "Continuous evaluation with term examinations",
+    { 
+      grade: 'Class 7', 
+      color: 'from-rose-500 to-red-500', 
+      icon: Beaker,
+      fullName: 'Class 7',
+      age: '11-12 years',
+      students: '25-30 per class',
+      duration: '6-7 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Advanced middle school with comprehensive curriculum and practical applications.',
+      features: ['Advanced Concepts', 'Practical Learning', 'Debates', 'Scientific Inquiry'],
     },
-    {
-      level: "8th Grade",
-      age: "12-13 years",
-      category: "middle",
-      description:
-        "Preparing for high school with comprehensive curriculum and career exploration",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Art",
-        "Career Guidance",
-      ],
-      students: "30-35 per class",
-      duration: "7 hours",
-      color: "bg-cyan-100 text-cyan-800 border-cyan-200",
-      objectives: [
-        "High school readiness",
-        "Career awareness",
-        "Advanced concepts",
-        "Leadership skills",
-      ],
-      activities: [
-        "Career counseling",
-        "Skill development workshops",
-        "Inter-school competitions",
-        "Research projects",
-      ],
-      assessment: "Comprehensive evaluation with board exam preparation",
+    { 
+      grade: 'Class 8', 
+      color: 'from-amber-500 to-orange-500', 
+      icon: Globe,
+      fullName: 'Class 8',
+      age: '12-13 years',
+      students: '25-30 per class',
+      duration: '6-7 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Art'],
+      description: 'Pre-high school preparation with career awareness and advanced learning methodologies.',
+      features: ['Career Guidance', 'Advanced Labs', 'Research Projects', 'Time Management'],
     },
-    {
-      level: "9th Grade",
-      age: "13-14 years",
-      category: "high",
-      description:
-        "High school foundation with board curriculum and competitive exam preparation",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Optional Subject",
-      ],
-      students: "35-40 per class",
-      duration: "8 hours",
-      color: "bg-emerald-100 text-emerald-800 border-emerald-200",
-      objectives: [
-        "Board exam preparation",
-        "Subject specialization",
-        "Time management",
-        "Academic excellence",
-      ],
-      activities: [
-        "Board exam coaching",
-        "Subject olympics",
-        "Career seminars",
-        "College preparation",
-      ],
-      assessment: "Board pattern examinations and mock tests",
+    { 
+      grade: 'Class 9', 
+      color: 'from-lime-500 to-green-500', 
+      icon: Calculator,
+      fullName: 'Class 9',
+      age: '13-14 years',
+      students: '30-35 per class',
+      duration: '7-8 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Electives'],
+      description: 'High school with board exam foundation and competitive exam preparation.',
+      features: ['Board Exam Prep', 'Advanced Topics', 'Practical Focus', 'Career Planning'],
     },
-    {
-      level: "10th Grade",
-      age: "14-15 years",
-      category: "high",
-      description:
-        "Final year of school with intensive board exam preparation and career guidance",
-      subjects: [
-        "English",
-        "Mathematics",
-        "Science",
-        "Social Studies",
-        "Hindi",
-        "Computer",
-        "Additional Subject",
-      ],
-      students: "35-40 per class",
-      duration: "8 hours",
-      color: "bg-slate-100 text-slate-800 border-slate-200",
-      objectives: [
-        "Board exam success",
-        "Higher education readiness",
-        "Career planning",
-        "Personal development",
-      ],
-      activities: [
-        "Intensive coaching",
-        "Mock board exams",
-        "College counseling",
-        "Stress management",
-      ],
-      assessment: "Board examination preparation with regular assessments",
+    { 
+      grade: 'Class 10', 
+      color: 'from-cyan-500 to-blue-500', 
+      icon: Trophy,
+      fullName: 'Class 10',
+      age: '14-15 years',
+      students: '30-35 per class',
+      duration: '7-8 hours',
+      subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Hindi', 'Computer', 'Electives'],
+      description: 'Board examination year with intensive preparation and future pathway guidance.',
+      features: ['Board Exam Focus', 'Mock Tests', 'Career Counseling', 'Study Techniques'],
     },
   ];
 
-  const categories = [
-    { id: "all", name: "All Classes", count: classes.length },
-    {
-      id: "pre-primary",
-      name: "Pre-Primary",
-      count: classes.filter((c) => c.category === "pre-primary").length,
-    },
-    {
-      id: "primary",
-      name: "Primary",
-      count: classes.filter((c) => c.category === "primary").length,
-    },
-    {
-      id: "middle",
-      name: "Middle School",
-      count: classes.filter((c) => c.category === "middle").length,
-    },
-    {
-      id: "high",
-      name: "High School",
-      count: classes.filter((c) => c.category === "high").length,
-    },
-  ];
+  const selectedClassData = selectedClass !== null ? classes[selectedClass] : null;
 
-  const filteredClasses = (category: string) => {
-    return category === "all"
-      ? classes
-      : classes.filter((c) => c.category === category);
-  };
+  if (selectedClassData) {
+    const Icon = selectedClassData.icon;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Back Button */}
+          <button
+            onClick={() => setSelectedClass(null)}
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors mb-8 group"
+          >
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-semibold">Back to All Classes</span>
+          </button>
 
-  return (
-    <div className="py-12 bg-slate-200-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4">
-            Academic Programs
-          </Badge>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Classes</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive education programs from LKG to 10th grade designed to
-            nurture every child's potential through structured learning and
-            holistic development
-          </p>
-        </motion.div>
+          {/* Class Detail Card */}
+          <div className={`bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 bg-gradient-to-br ${selectedClassData.color} p-1`}>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div className={`p-4 bg-gradient-to-br ${selectedClassData.color} rounded-2xl`}>
+                  <Icon className="h-16 w-16 text-white" />
+                </div>
+                <span className={`px-4 py-2 bg-gradient-to-br ${selectedClassData.color} text-white rounded-full text-lg font-bold`}>
+                  {selectedClassData.age}
+                </span>
+              </div>
 
-        {/* CHANGE 1: Removed lg:hidden to make tabs visible on all screen sizes */}
-        <Tabs defaultValue="all" className="w-full">
-          {/* CHANGE 2: Made the TabsList responsive */}
-          <TabsList className="flex overflow-x-auto sm:grid sm:grid-cols-5 w-full max-w-4xl mx-auto mb-8">
-            {categories.map((category) => (
-              <TabsTrigger
-                key={category.id}
-                value={category.id}
-                // Added flex-shrink-0 to prevent tabs from shrinking on flex layout
-                className="text-sm flex-shrink-0"
-              >
-                {category.name}
-                <Badge variant="secondary" className="ml-2 text-xs">
-                  {category.count}
-                </Badge>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+              <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-2">
+                {selectedClassData.fullName}
+              </h1>
+              <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${selectedClassData.color} mb-6">
+                {selectedClassData.grade}
+              </h2>
 
-          {categories.map((category) => (
-            <TabsContent key={category.id} value={category.id}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredClasses(category.id).map((classInfo, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <Card
-                      className={`h-full hover:shadow-xl transition-all duration-300 border-2 ${classInfo.color} bg-slate-200`}
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                {selectedClassData.description}
+              </p>
+
+              {/* Class Details Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className={`p-4 bg-gradient-to-br ${selectedClassData.color} bg-opacity-10 rounded-xl`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Users className="h-5 w-5 text-blue-600" />
+                    <span className="font-bold text-gray-900 dark:text-white">Class Size</span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300">{selectedClassData.students}</p>
+                </div>
+
+                <div className={`p-4 bg-gradient-to-br ${selectedClassData.color} bg-opacity-10 rounded-xl`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock className="h-5 w-5 text-green-600" />
+                    <span className="font-bold text-gray-900 dark:text-white">Duration</span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300">{selectedClassData.duration} daily</p>
+                </div>
+              </div>
+
+              {/* Key Features */}
+              <div className="mb-8">
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">
+                  Key Features 🌟
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {selectedClassData.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                      <div className={`w-2 h-2 bg-gradient-to-br ${selectedClassData.color} rounded-full`}></div>
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Subjects */}
+              <div>
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-4">
+                  Subjects Covered 📚
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {selectedClassData.subjects.map((subject, idx) => (
+                    <span
+                      key={idx}
+                      className={`px-4 py-2 bg-gradient-to-br ${selectedClassData.color} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all`}
                     >
-                      <CardHeader className="pb-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-2xl font-bold text-gray-900">
-                            {classInfo.level}
-                          </CardTitle>
-                          <Badge className={classInfo.color}>
-                            {classInfo.age}
-                          </Badge>
-                        </div>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {classInfo.description}
-                        </p>
-                      </CardHeader>
-
-                      <CardContent className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="flex items-center text-sm text-gray-600">
-                            <Users className="h-4 w-4 mr-2 text-slate-200" />
-                            {classInfo.students}
-                          </div>
-                          <div className="flex items-center text-sm text-gray-600">
-                            <Clock className="h-4 w-4 mr-2 text-slate-200" />
-                            {classInfo.duration} daily
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Target className="h-4 w-4 mr-2 text-slate-200" />
-                            Learning Objectives:
-                          </h4>
-                          <ul className="space-y-1">
-                            {classInfo.objectives.map((objective, objIndex) => (
-                              <li
-                                key={objIndex}
-                                className="flex items-start text-sm text-gray-600"
-                              >
-                                <CheckCircle className="h-3 w-3 mr-2 text-green-500 mt-0.5 flex-shrink-0" />
-                                {objective}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <BookOpen className="h-4 w-4 mr-2 text-slate-200" />
-                            Subjects ({classInfo.subjects.length}):
-                          </h4>
-                          <div className="flex flex-wrap gap-1">
-                            {classInfo.subjects.map((subject, subIndex) => (
-                              <Badge
-                                key={subIndex}
-                                variant="secondary"
-                                className="text-xs"
-                              >
-                                {subject}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Star className="h-4 w-4 mr-2 text-slate-200" />
-                            Key Activities:
-                          </h4>
-                          <div className="grid grid-cols-2 gap-1">
-                            {classInfo.activities.map((activity, actIndex) => (
-                              <div
-                                key={actIndex}
-                                className="flex items-center text-xs text-gray-600"
-                              >
-                                <div className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></div>
-                                {activity}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="pt-4 border-t">
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                            <Award className="h-4 w-4 mr-2 text-slate-200" />
-                            Assessment Method:
-                          </h4>
-                          <p className="text-sm text-gray-600">
-                            {classInfo.assessment}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+                      {subject}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-
-        {/* Academic Excellence Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 bg-slate-200 rounded-2xl p-8 shadow-lg"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Academic Excellence Statistics
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black mb-2">98%</div>
-              <div className="text-sm text-gray-600 mb-3">Pass Rate</div>
-              <Progress value={98} className="h-2" />
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black mb-2">85%</div>
-              <div className="text-sm text-gray-600 mb-3">Distinction Rate</div>
-              <Progress value={85} className="h-2" />
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black mb-2">92%</div>
-              <div className="text-sm text-gray-600 mb-3">
-                Student Satisfaction
-              </div>
-              <Progress value={92} className="h-2" />
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-black mb-2">96%</div>
-              <div className="text-sm text-gray-600 mb-3">
-                Parent Satisfaction
-              </div>
-              <Progress value={96} className="h-2" />
             </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center space-y-6">
+            <div className="flex justify-center gap-3 mb-4">
+              <Sparkles className="h-10 w-10 animate-bounce text-yellow-300" />
+              <BookOpen className="h-16 w-16 animate-pulse" />
+              <Sparkles className="h-10 w-10 animate-bounce delay-150 text-yellow-300" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black">
+              Our Classes 📚
+            </h1>
+            <p className="text-xl md:text-2xl text-purple-100">
+              From LKG to Class 10 - Click to Explore Each Class!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Classes Grid */}
+      <div className="py-16 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+              Select a Class to View Details ✨
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Click on any class to see curriculum, subjects, and more!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {classes.map((cls, index) => {
+              const Icon = cls.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => setSelectedClass(index)}
+                  className={`group relative overflow-hidden bg-gradient-to-br ${cls.color} rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-110 cursor-pointer`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="relative text-center">
+                    <Icon className="h-12 w-12 text-white mx-auto mb-3 group-hover:scale-125 transition-transform" />
+                    <h3 className="text-2xl font-black text-white">{cls.grade}</h3>
+                    <p className="text-white/80 text-sm mt-1">{cls.age}</p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

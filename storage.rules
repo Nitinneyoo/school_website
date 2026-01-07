@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isActiveTeacher() {
+      return isAuthenticated() && 
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'teacher' &&
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.isActive == true;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Results files
+    match /results/{class}/{subject}/{fileName} {
+      allow read: if true; // Public read for students
+      allow write: if isActiveTeacher() || isAdmin();
+      allow delete: if isAdmin() || isActiveTeacher();
+    }
+  }
+}

@@ -73,7 +73,7 @@ export function Features() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-purple-50 via-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,17 +101,17 @@ export function Features() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+              <Card className="h-full hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 border-2 hover:border-blue-400">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-slate-200 group-hover:scale-110 transition-transform">
+                    <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl text-white group-hover:scale-110 transition-transform shadow-lg">
                       {feature.icon}
                     </div>
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-800">
                       {feature.badge}
                     </Badge>
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-lg font-bold">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <p className="text-gray-600 text-sm leading-relaxed">
@@ -128,12 +128,12 @@ export function Features() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-20 bg-slate-200 rounded-2xl p-8 text-black"
+          className="mt-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-2xl p-8 text-white shadow-2xl"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-3xl font-bold mb-2">20+</div>
-              <div className="text-slate-800">Years of Excellence</div>
+              <div className="text-blue-100">Years of Excellence</div>
             </div>
             <div>
               <div className="text-3xl font-bold mb-2">1200+</div>

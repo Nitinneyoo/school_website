@@ -1,271 +1,211 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import {
-  Calendar,
-  CheckCircle,
-  FileText,
-  Mail,
-  MapPin,
-  Phone,
-  Users,
-} from "lucide-react";
+import { createFileRoute } from '@tanstack/react-router';
+import {  CheckCircle, Download, Trophy, Star } from 'lucide-react';
 
-export const Route = createFileRoute("/admissions")({
-  component: Admissions,
+export const Route = createFileRoute('/admissions')({
+  component: AdmissionsPage,
 });
 
-function Admissions() {
-  const admissionProcess = [
-    {
-      step: 1,
-      title: "Application Form",
-      description: "Fill out the online application form or visit our office",
-      icon: <FileText className="h-6 w-6" />,
-    },
-    {
-      step: 2,
-      title: "Document Submission",
-      description: "Submit required documents and certificates",
-      icon: <CheckCircle className="h-6 w-6" />,
-    },
-    {
-      step: 3,
-      title: "Assessment",
-      description: "Child assessment and parent interaction",
-      icon: <Users className="h-6 w-6" />,
-    },
-    {
-      step: 4,
-      title: "Admission Confirmation",
-      description: "Receive admission confirmation and complete enrollment",
-      icon: <CheckCircle className="h-6 w-6" />,
-    },
+function AdmissionsPage() {
+  const steps = [
+    { number: 1, title: 'Fill Application', description: 'Complete the online application form' },
+    { number: 2, title: 'Submit Documents', description: 'Upload required documents' },
+    { number: 3, title: 'Entrance Test', description: 'Attend the entrance examination' },
+    { number: 4, title: 'Interview', description: 'Parent-student interview' },
+    { number: 5, title: 'Admission', description: 'Get your admission letter!' },
   ];
 
   const requirements = [
-    "Birth certificate",
-    "Previous school records (if applicable)",
-    "Passport size photographs",
-    "Address proof",
-    "Medical certificate",
-    "Caste certificate (if applicable)",
-  ];
-
-  const fees = [
-    {
-      class: "LKG - UKG",
-      admission: "₹1,000",
-      tuition: "₹5,000/year",
-      total: "₹6,000",
-    },
-    {
-      class: "1st - 3rd Grade",
-      admission: "₹1,000",
-      tuition: "₹5,000/year",
-      total: "₹6,000",
-    },
-    {
-      class: "4th - 5th Grade",
-      admission: "₹1,000",
-      tuition: "₹5,000/year",
-      total: "₹6,000",
-    },
-    {
-      class: "6th - 8th Grade",
-      admission: "₹2,000",
-      tuition: "₹10,000/year",
-      total: "₹12,000",
-    },
-    {
-      class: "9th - 10th Grade",
-      admission: "₹5,000",
-      tuition: "₹12,000/year",
-      total: "₹17,000",
-    },
+    'Birth Certificate',
+    'Previous School Transfer Certificate',
+    'Mark Sheets (if applicable)',
+    'Aadhar Card Copy',
+    'Passport Size Photographs',
+    'Address Proof',
   ];
 
   return (
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Admissions</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join our school community and give your child the best foundation
-            for their future
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Admission Process
-            </h2>
-            <div className="space-y-6">
-              {admissionProcess.map((step, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                    <span className="text-slate-200 font-bold">
-                      {step.step}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Required Documents
-            </h2>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <ul className="space-y-3">
-                {requirements.map((requirement, index) => (
-                  <li key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-700">{requirement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-8 bg-primary-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Important Dates
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-slate-200" />
-                  <span className="text-gray-700">
-                    Application Start: March 1st
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-slate-200" />
-                  <span className="text-gray-700">
-                    Application Deadline: April 30th
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Calendar className="h-5 w-5 text-slate-200" />
-                  <span className="text-gray-700">
-                    Academic Year Starts: July 1st
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+    <div className="min-h-screen">
+      {/* Hero */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-orange-500 via-amber-500 to-yellow-500 text-white">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-            Fee Structure
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full bg-slate-100 rounded-lg shadow-md">
-              <thead className="bg-primary-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Class
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Admission Fee
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Tuition Fee
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Total (1st Year)
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {fees.map((fee, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
-                      {fee.class}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700">
-                      {fee.admission}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700">
-                      {fee.tuition}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">
-                      {fee.total}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center space-y-6">
+            <div className="flex justify-center gap-3 mb-4">
+              <Star className="h-10 w-10 animate-bounce text-white" />
+              <Trophy className="h-16 w-16 animate-pulse" />
+              <Star className="h-10 w-10 animate-bounce delay-150 text-white" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black">
+              Join Our School! 🎓
+            </h1>
+            <p className="text-xl md:text-2xl text-orange-100">
+              Start Your Journey to Excellence
+            </p>
           </div>
-        </motion.div>
+       </div>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="bg-slate-200 rounded-lg shadow-md p-8"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-            Contact for Admissions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Phone className="h-8 w-8 text-black" />
+      {/* Admission Process */}
+      <div className="py-16 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+              Admission Process ✨
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Simple steps to join our school family
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+              >
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg">
+                  {step.number}
+                </div>
+                <div className="text-center mt-6">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {step.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Phone
-              </h3>
-              <p className="text-gray-600">+91 7999972872</p>
-              <p className="text-gray-600">+91 7999972872</p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Requirements */}
+      <div className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+                Required Documents 📋
+              </h2>
             </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Mail className="h-8 w-8 text-black" />
+
+            <div className="bg-gradient-to-br from-orange-500 to-yellow-500 rounded-3xl p-8 shadow-2xl">
+              <div className="space-y-4">
+                {requirements.map((req, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 bg-white/20 backdrop-blur-sm rounded-xl p-4 hover:bg-white/30 transition-all"
+                  >
+                    <CheckCircle className="h-6 w-6 text-white flex-shrink-0" />
+                    <span className="text-lg font-semibold text-white">{req}</span>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Email
-              </h3>
-              <p className="text-gray-600">modelmiddleschool@gmail.com</p>
-              <p className="text-gray-600">Soon</p>
             </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <MapPin className="h-8 w-8 text-black" />
+
+            {/* <div className="mt-8 flex justify-center">
+              <button className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-700 hover:to-yellow-700 text-white rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+                <Download className="h-5 w-5" />
+                Download Application Form
+              </button>
+            </div> */}
+          </div>
+        </div>
+      </div>
+
+      {/* Fee Structure */}
+      <div className="py-16 bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+              Fee Structure 💰
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Transparent and affordable education
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-8 max-w-5xl mx-auto">
+            {/* Tuition Fees */}
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
+                <h3 className="text-2xl font-black text-white">Annual Tuition Fees</h3>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Address
-              </h3>
-              <p className="text-gray-600">Ambedkar Nagar Baghedi</p>
-              <p className="text-gray-600">Chakghat Dist Rewa M.P. 486226</p>
+              <div className="p-6 space-y-4">
+                {[
+                  { grade: 'LKG - UKG', fee: '₹5,000' },
+                  { grade: 'Class 1-5', fee: '₹5,000' },
+                  { grade: 'Class 6-8', fee: '₹7,000' },
+                  { grade: 'Class 9-10', fee: '₹10,000' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-xl">
+                    <span className="font-bold text-gray-900 dark:text-white">{item.grade}</span>
+                    <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                      {item.fee}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Additional Fees */}
+            {/* <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-orange-600 to-yellow-600 px-6 py-4">
+                <h3 className="text-2xl font-black text-white">Additional Fees</h3>
+              </div>
+              <div className="p-6 space-y-4">
+                {[
+                  { item: 'Admission Fee (One-time)', fee: '₹5,000' },
+                  { item: 'Books & Stationery', fee: '₹3,000' },
+                  { item: 'Uniform', fee: '₹2,500' },
+                  { item: 'Transport (Optional)', fee: '₹12,000' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center p-4 bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-gray-700 dark:to-gray-600 rounded-xl">
+                    <span className="font-semibold text-gray-900 dark:text-white">{item.item}</span>
+                    <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-yellow-600">
+                      {item.fee}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div> */}
+          </div>
+
+          {/* Payment Info */}
+          <div className="mt-12 max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 text-center">
+              Payment Information
+            </h3>
+            <div className="space-y-3 text-gray-600 dark:text-gray-300">
+              <p className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Fees can be paid in quarterly installments</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>5% discount on annual payment</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Sibling discount: 10% for second child, 15% for third child onwards</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Scholarship available for meritorious students</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <span className="text-green-600 font-bold">✓</span>
+                <span>Payment modes: Online transfer, Cheque, Cash</span>
+              </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

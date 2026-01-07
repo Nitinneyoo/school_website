@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isTeacher() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher';
+    }
+    
+    function isActiveTeacher() {
+      return isTeacher() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isActive == true;
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAdmin() || request.auth.uid == userId;
+      // Allow create if admin OR if creating own profile (for teacher account creation)
+      allow create: if isAdmin() || (isAuthenticated() && request.auth.uid == userId);
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+    
+    // Results collection
+    match /results/{resultId} {
+      allow read: if true; // Public read for students
+      allow create: if isActiveTeacher();
+      allow update: if isAdmin() || 
+        (isActiveTeacher() && resource.data.uploadedBy == request.auth.uid);
+      allow delete: if isAdmin() || 
+        (isActiveTeacher() && resource.data.uploadedBy == request.auth.uid);
+    }
+    
+    // Teacher activity logs
+    match /teacherActivity/{activityId} {
+      allow read: if isAdmin();
+      allow create: if isActiveTeacher() || isAdmin();
+      allow update, delete: if false; // Immutable logs
+    }
+  }
+}
