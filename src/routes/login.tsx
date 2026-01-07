@@ -146,11 +146,11 @@ function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+          {/* <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
             <p className="text-sm text-center text-gray-600 dark:text-gray-400">
               Student? <a href="/resultss" className="text-blue-600 dark:text-blue-400 hover:underline">View Results</a>
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Back to Home */}
