@@ -1,1 +1,0 @@
-import{r,j as o,O as n}from"./index-DtGsV18p.js";import{P as a}from"./ProtectedRoute-D22Wddro.js";const d=function(){return r.useEffect(()=>{const e=t=>{t.preventDefault(),t.returnValue=""};return window.addEventListener("beforeunload",e),()=>window.removeEventListener("beforeunload",e)},[]),o.jsx(a,{allowedRoles:["teacher"],children:o.jsx(n,{})})};export{d as component};
