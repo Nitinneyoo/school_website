@@ -1,0 +1,1 @@
+import{j as o,O as r}from"./vendor-router-fAM80Ws7.js";import{P as e}from"./ProtectedRoute-BbLNanjr.js";import"./vendor-react-HnKmhvXM.js";import"./index-C4WCsToT.js";import"./vendor-ui-CasoyLD2.js";import"./vendor-animations-C3B6sSUk.js";const t=function(){return o.jsx(e,{allowedRoles:["teacher"],children:o.jsx(r,{})})};export{t as component};

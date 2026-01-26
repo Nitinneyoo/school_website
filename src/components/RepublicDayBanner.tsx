@@ -93,8 +93,8 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
       >
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Floating tricolor particles */}
-          {[...Array(15)].map((_, i) => (
+          {/* Floating tricolor particles - Reduced from 15 to 8 for performance */}
+          {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-3 h-3 rounded-full"
@@ -102,6 +102,7 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
                 background: i % 3 === 0 ? '#FF9933' : i % 3 === 1 ? '#FFFFFF' : '#138808',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
+                willChange: 'transform, opacity',
               }}
               animate={{
                 y: [0, -100, 0],
@@ -190,6 +191,7 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
                   src="/republic_day_blast.png"
                   alt="JAI HIND - Republic Day Celebration"
                   className="w-full h-auto"
+                  loading="lazy"
                 />
               </div>
 
@@ -243,6 +245,7 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
                   src="/republic_day_26_jan.png"
                   alt="26 January - Republic Day"
                   className="w-full h-auto"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
@@ -300,10 +303,10 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
             </motion.div>
           </motion.div>
 
-          {/* Animated Confetti Effect */}
+          {/* Animated Confetti Effect - Reduced from 30 to 15 for performance */}
           {showConfetti && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {[...Array(30)].map((_, i) => (
+              {[...Array(15)].map((_, i) => (
                 <motion.div
                   key={`confetti-${i}`}
                   className="absolute w-2 h-2"
@@ -311,6 +314,7 @@ export function RepublicDayBanner({ variant = 'hero' }: RepublicDayBannerProps) 
                     background: i % 3 === 0 ? '#FF9933' : i % 3 === 1 ? '#FFFFFF' : '#138808',
                     left: `${Math.random() * 100}%`,
                     top: '-10%',
+                    willChange: 'transform, opacity',
                   }}
                   animate={{
                     y: ['0vh', '110vh'],

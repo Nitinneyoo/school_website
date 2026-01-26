@@ -1,1 +1,0 @@
-import{j as t,O as o}from"./index-BDf_TsDU.js";import{P as e}from"./ProtectedRoute-BXucr_1X.js";const a=function(){return t.jsx(e,{allowedRoles:["teacher"],children:t.jsx(o,{})})};export{a as component};

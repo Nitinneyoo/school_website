@@ -2,6 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
 import { ArrowRight, Trophy, Sparkles, Rocket, Brain } from 'lucide-react';
 import { RepublicDayBanner } from '../components/RepublicDayBanner';
+import { memo, ReactNode } from 'react';
 // import { MacbookScroll } from '../components/ui/macbook-scroll';
 
 export const Route = createFileRoute('/')({
@@ -37,6 +38,7 @@ function Home() {
                 src="/school_c_building.png" 
                 alt="Model Middle School C-Shaped Building" 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparen" />
             </div>
@@ -138,6 +140,7 @@ function Home() {
                 src="/school_hero_4k.png" 
                 alt="Model Middle School Campus" 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
               
               {/* Gradient overlay */}
@@ -197,7 +200,8 @@ function Home() {
   );
 }
 
-function FeatureCard({ icon, title, desc, color }: { icon: any, title: string, desc: string, color: string }) {
+
+const FeatureCard = memo(({ icon, title, desc, color }: { icon: ReactNode, title: string, desc: string, color: string }) => {
   return (
     <motion.div 
       whileHover={{ y: -10 }}
@@ -210,9 +214,10 @@ function FeatureCard({ icon, title, desc, color }: { icon: any, title: string, d
       <p className="text-lg text-gray-400 font-light leading-relaxed">{desc}</p>
     </motion.div>
   )
-}
+});
 
-function StatItem({ value, label }: { value: string, label: string }) {
+
+const StatItem = memo(({ value, label }: { value: string, label: string }) => {
   return (
     <div className="space-y-2">
       <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
@@ -221,4 +226,4 @@ function StatItem({ value, label }: { value: string, label: string }) {
       <div className="text-sm font-bold uppercase tracking-widest text-gray-500">{label}</div>
     </div>
   )
-}
+});

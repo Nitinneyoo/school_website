@@ -40,8 +40,26 @@ export default defineConfig({
       },
       workbox: {
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB limit (increased from default 2MB)
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+        // Only precache essential files, exclude large images
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff,woff2}'],
+        // Exclude large images from precache to reduce service worker size
+        globIgnores: ['**/teachers/logo.png', '**/school_hero_4k.png', '**/republic_day_*.png'],
         runtimeCaching: [
+          {
+            // Cache images at runtime with cache-first strategy
+            urlPattern: /\.(?:png|jpg|jpeg|svg|webp|gif)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
@@ -78,6 +96,26 @@ export default defineConfig({
     },
   },
 
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['@tanstack/react-router'],
+          'vendor-animations': ['framer-motion'],
+          'vendor-ui': ['@radix-ui/react-accordion', '@radix-ui/react-alert-dialog', '@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-slot', '@radix-ui/react-tabs'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
 
   server: {
     hmr: {
