@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { createTeacherAccount } from '../../services/authService';
 import { SUBJECTS } from '../../types';
 import type { UserProfile } from '../../types';
+import { toast } from 'sonner';
 
 interface TeacherFormModalProps {
   teacher: UserProfile | null;
@@ -52,8 +53,10 @@ export function TeacherFormModal({ teacher, onClose, onSuccess }: TeacherFormMod
     const result = await createTeacherAccount(formData, userProfile?.uid || '');
 
     if (result.success) {
-      // Show success message
-      alert(`✅ Teacher account created successfully!\n\nEmail: ${formData.email}\nName: ${formData.name}\nSubjects: ${formData.subjects.join(', ')}\n\n⚠️ Note: You have been logged out due to Firebase limitations.\nYou will be redirected to the login page.`);
+      // Show success toast
+      toast.success('Teacher account created successfully!', {
+        description: `${formData.name} (${formData.email}) has been added. You will be redirected to login.`,
+      });
       
       // Store success message for login page
       sessionStorage.setItem('teacherCreated', JSON.stringify({
@@ -64,8 +67,11 @@ export function TeacherFormModal({ teacher, onClose, onSuccess }: TeacherFormMod
       // Redirect to login after a short delay
       setTimeout(() => {
         window.location.href = '/login';
-      }, 1000);
+      }, 1500);
     } else {
+      toast.error('Failed to create teacher account', {
+        description: result.error || 'Please try again.',
+      });
       setError(result.error || 'Failed to create teacher account');
       setLoading(false);
     }

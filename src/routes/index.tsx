@@ -1,277 +1,224 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { GraduationCap, Users, BookOpen, Trophy, Sparkles, ArrowRight, Star, Zap, Heart, Target } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Trophy, Sparkles, Rocket, Brain } from 'lucide-react';
+import { RepublicDayBanner } from '../components/RepublicDayBanner';
+// import { MacbookScroll } from '../components/ui/macbook-scroll';
 
 export const Route = createFileRoute('/')({
-  component: HomePage,
+  component: Home,
 });
 
-function HomePage() {
+function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="space-y-32 pb-28">
+      
+      {/* 🇮🇳 REPUBLIC DAY BANNER - Automatically shows on January 26th 
+          To manually enable/disable, uncomment the line below.
+          The component checks the date automatically and only displays on Jan 26.
+      */}
+      <RepublicDayBanner variant="hero" />
+      
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 text-white">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
+        <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          
+          {/* Left Side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative h-[450px] rounded-[3rem] overflow-hidden group hidden lg:block"
+          >
+            {/* Animated glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-2xl group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative h-full bg-black/40 backdrop-blur-sm border border-white/10 rounded-[3rem] overflow-hidden">
+              <img 
+                src="/school_c_building.png" 
+                alt="Model Middle School C-Shaped Building" 
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparen" />
+            </div>
+          </motion.div>
+
+          {/* Right Side - Content */}
+          <div className="text-center lg:text-left space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4"
+            >
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+              <span className="text-sm font-bold tracking-widest uppercase text-gray-300">Welcome to the Future of Learning</span>
+            </motion.div>
+
+            <motion.h1 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-black tracking-tighter leading-none"
+            >
+              MODEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">MIDDLE</span><br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-amber-500">SCHOOL</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-2xl text-gray-400 font-light leading-relaxed"
+            >
+              Where academic excellence meets creative innovation. We don't just teach; we ignite potential.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-col md:flex-row gap-6 justify-center lg:justify-start pt-8"
+            >
+              <Link 
+                to="/admissions"
+                className="group px-8 py-4 bg-white text-black rounded-full font-black text-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform"
+              >
+                Start Journey <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link 
+                to="/admissions"
+                className="group px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold text-xl hover:bg-white/10 backdrop-blur-md transition-colors flex items-center justify-center"
+              >
+                Explore More <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
+      </section>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
-            <div className="space-y-8">
-              <div className="flex justify-center lg:justify-start gap-3 mb-6">
-                <Sparkles className="h-10 w-10 animate-bounce text-yellow-300" />
-                <GraduationCap className="h-16 w-16 animate-pulse" />
-                <Sparkles className="h-10 w-10 animate-bounce delay-150 text-yellow-300" />
-              </div>
-              
-              <h1 className="text-5xl md:text-7xl font-black tracking-tight text-center lg:text-left">
-                Welcome to<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300">
-                  Model Middle School
-                </span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-blue-100 font-medium text-center lg:text-left">
-                Where Excellence Meets Innovation 🌟<br />
-                Nurturing Young Minds for a Brighter Tomorrow
-              </p>
+      {/* Features Grid */}
+      <section className="px-4 max-w-[1400px] mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
+           <FeatureCard 
+             icon={<Brain className="w-12 h-12 text-pink-500" />}
+             title="Interactive Learning"
+             desc="Gamified curriculum that adapts to every student's pace."
+             color="from-pink-500/20 to-purple-500/20"
+           />
+           <FeatureCard 
+             icon={<Rocket className="w-12 h-12 text-blue-500" />}
+             title="Innovation Hub"
+             desc="State-of-the-art labs for robotics, coding, and AI."
+             color="from-blue-500/20 to-cyan-500/20"
+           />
+           <FeatureCard 
+             icon={<Trophy className="w-12 h-12 text-yellow-500" />}
+             title="Global Excellence"
+             desc="Preparing leaders for a connected, borderless world."
+             color="from-yellow-500/20 to-orange-500/20"
+           />
+        </div>
+      </section>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-6">
-                <Link
-                  to="/admissions"
-                  className="group flex items-center gap-2 px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+      {/* Image Showcase Section */}
+      <section className="px-4 max-w-[1400px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative rounded-[3rem] overflow-hidden group"
+        >
+          {/* Animated border effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-xl group-hover:opacity-100 transition-opacity duration-500" />
+          
+          <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-[3rem] overflow-hidden">
+            {/* Image container */}
+            <div className="relative h-[500px] md:h-[600px] overflow-hidden">
+              <img 
+                src="/school_hero_4k.png" 
+                alt="Model Middle School Campus" 
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              />
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+              
+              {/* Text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="max-w-3xl"
                 >
-                  Apply Now
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/about"
-                  className="flex items-center gap-2 px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-                >
-                  Learn More
-                  <BookOpen className="h-5 w-5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* School Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Model Middle School Building"
-                  className="w-full h-auto object-cover"
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
-              </div>
-              
-              {/* Floating stats card */}
-              <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-2xl">
-                <div className="flex gap-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-black text-blue-600">98%</div>
-                    <div className="text-xs text-gray-600">Pass Rate</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-black text-purple-600">4.9</div>
-                    <div className="text-xs text-gray-600">Rating</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-black text-orange-600">15+</div>
-                    <div className="text-xs text-gray-600">Awards</div>
-                  </div>
-                </div>
+                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Campus</span>
+                  </h2>
+                  <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                    A world-class learning environment designed to inspire creativity, foster collaboration, and nurture excellence. Experience education in a space where innovation meets tradition.
+                  </p>
+                </motion.div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </section>
 
-      {/* Quick Stats */}
-      <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Stat 1 */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group">
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl group-hover:scale-110 transition-transform">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <Sparkles className="h-6 w-6 text-yellow-500 animate-pulse" />
-              </div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
-                1000+
-              </div>
-              <div className="text-gray-600 dark:text-gray-300 font-semibold">
-                Happy Students
-              </div>
-            </div>
+      {/* Stats Section */}
+      <section className="py-20 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+         <div className="max-w-[1400px] mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <StatItem value="50+" label="Expert Mentors" />
+            <StatItem value="1000+" label="Bright Minds" />
+            <StatItem value="100%" label="Success Rate" />
+            <StatItem value="25+" label="Global Awards" />
+         </div>
+      </section>
 
-            {/* Stat 2 */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group">
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-4 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl group-hover:scale-110 transition-transform">
-                  <BookOpen className="h-8 w-8 text-white" />
-                </div>
-                <Star className="h-6 w-6 text-yellow-500 animate-pulse" />
-              </div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 mb-2">
-                50+
-              </div>
-              <div className="text-gray-600 dark:text-gray-300 font-semibold">
-                Expert Teachers
-              </div>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group">
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl group-hover:scale-110 transition-transform">
-                  <Trophy className="h-8 w-8 text-white" />
-                </div>
-                <Zap className="h-6 w-6 text-yellow-500 animate-pulse" />
-              </div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600 mb-2">
-                15+
-              </div>
-              <div className="text-gray-600 dark:text-gray-300 font-semibold">
-                Years of Excellence
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
-              Why Choose Us? ✨
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              Discover what makes Model Middle School special
+      {/* CTA Section */}
+      <section className="px-4 text-center">
+         <div className="max-w-4xl mx-auto glass-card rounded-[3rem] p-16 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <h2 className="text-5xl font-black text-white mb-6 relative z-10">Ready to Shape the Future?</h2>
+            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto relative z-10">
+              Join a community of dreamers, doers, and leaders. Admissions are open for the upcoming academic year.
             </p>
-          </div>
+            <Link 
+               to="/admissions"
+               className="inline-flex relative z-10 px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl font-bold text-2xl text-white hover:scale-105 transition-transform shadow-lg hover:shadow-blue-500/50"
+             >
+               Apply Now
+             </Link>
+         </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Feature 1 */}
-            <div className="group relative overflow-hidden bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <BookOpen className="h-12 w-12 text-white mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Quality Education
-                </h3>
-                <p className="text-blue-100">
-                  Comprehensive curriculum designed for holistic development
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="group relative overflow-hidden bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <Users className="h-12 w-12 text-white mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Expert Faculty
-                </h3>
-                <p className="text-green-100">
-                  Experienced teachers dedicated to student success
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="group relative overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <Target className="h-12 w-12 text-white mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Results Focused
-                </h3>
-                <p className="text-orange-100">
-                  Proven track record of academic excellence
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="group relative overflow-hidden bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <Heart className="h-12 w-12 text-white mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Caring Environment
-                </h3>
-                <p className="text-pink-100">
-                  Safe and nurturing atmosphere for all students
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Links Section */}
-      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-              Quick Access 🚀
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              Everything you need, just a click away
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link
-              to="/resultss"
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:scale-105"
-            >
-              <Trophy className="h-12 w-12 text-purple-600 mb-4 group-hover:animate-bounce" />
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                View Results 📊
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Check academic results by class
-              </p>
-            </Link>
-
-            <Link
-              to="/classes"
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:scale-105"
-            >
-              <BookOpen className="h-12 w-12 text-blue-600 mb-4 group-hover:animate-bounce" />
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Our Classes 📚
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Explore our grade levels
-              </p>
-            </Link>
-
-            <Link
-              to="/contact"
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:scale-105"
-            >
-              <Users className="h-12 w-12 text-green-600 mb-4 group-hover:animate-bounce" />
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Get in Touch 📧
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                We're here to help you
-              </p>
-            </Link>
-          </div>
-        </div>
-      </div>
     </div>
   );
+}
+
+function FeatureCard({ icon, title, desc, color }: { icon: any, title: string, desc: string, color: string }) {
+  return (
+    <motion.div 
+      whileHover={{ y: -10 }}
+      className={`p-8 rounded-[2rem] bg-gradient-to-br ${color} border border-white/5 backdrop-blur-sm`}
+    >
+      <div className="bg-white/5 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 border border-white/10">
+        {icon}
+      </div>
+      <h3 className="text-3xl font-bold text-white mb-4">{title}</h3>
+      <p className="text-lg text-gray-400 font-light leading-relaxed">{desc}</p>
+    </motion.div>
+  )
+}
+
+function StatItem({ value, label }: { value: string, label: string }) {
+  return (
+    <div className="space-y-2">
+      <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
+        {value}
+      </div>
+      <div className="text-sm font-bold uppercase tracking-widest text-gray-500">{label}</div>
+    </div>
+  )
 }

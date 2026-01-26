@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TeachersRouteImport } from './routes/teachers'
 import { Route as TeacherRouteImport } from './routes/teacher'
 import { Route as ResultssRouteImport } from './routes/resultss'
 import { Route as ResultsRouteImport } from './routes/results'
@@ -27,6 +28,11 @@ import { Route as TeacherMyUploadsRouteImport } from './routes/teacher/my-upload
 import { Route as AdminTeachersRouteImport } from './routes/admin/teachers'
 import { Route as AdminActivityRouteImport } from './routes/admin/activity'
 
+const TeachersRoute = TeachersRouteImport.update({
+  id: '/teachers',
+  path: '/teachers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeacherRoute = TeacherRouteImport.update({
   id: '/teacher',
   path: '/teacher',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
   '/teacher': typeof TeacherRouteWithChildren
+  '/teachers': typeof TeachersRoute
   '/admin/activity': typeof AdminActivityRoute
   '/admin/teachers': typeof AdminTeachersRoute
   '/teacher/my-uploads': typeof TeacherMyUploadsRoute
@@ -142,6 +149,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
+  '/teachers': typeof TeachersRoute
   '/admin/activity': typeof AdminActivityRoute
   '/admin/teachers': typeof AdminTeachersRoute
   '/teacher/my-uploads': typeof TeacherMyUploadsRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/results': typeof ResultsRoute
   '/resultss': typeof ResultssRoute
   '/teacher': typeof TeacherRouteWithChildren
+  '/teachers': typeof TeachersRoute
   '/admin/activity': typeof AdminActivityRoute
   '/admin/teachers': typeof AdminTeachersRoute
   '/teacher/my-uploads': typeof TeacherMyUploadsRoute
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/results'
     | '/resultss'
     | '/teacher'
+    | '/teachers'
     | '/admin/activity'
     | '/admin/teachers'
     | '/teacher/my-uploads'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/results'
     | '/resultss'
+    | '/teachers'
     | '/admin/activity'
     | '/admin/teachers'
     | '/teacher/my-uploads'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/results'
     | '/resultss'
     | '/teacher'
+    | '/teachers'
     | '/admin/activity'
     | '/admin/teachers'
     | '/teacher/my-uploads'
@@ -239,10 +251,18 @@ export interface RootRouteChildren {
   ResultsRoute: typeof ResultsRoute
   ResultssRoute: typeof ResultssRoute
   TeacherRoute: typeof TeacherRouteWithChildren
+  TeachersRoute: typeof TeachersRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/teachers': {
+      id: '/teachers'
+      path: '/teachers'
+      fullPath: '/teachers'
+      preLoaderRoute: typeof TeachersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/teacher': {
       id: '/teacher'
       path: '/teacher'
@@ -406,6 +426,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResultsRoute: ResultsRoute,
   ResultssRoute: ResultssRoute,
   TeacherRoute: TeacherRouteWithChildren,
+  TeachersRoute: TeachersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

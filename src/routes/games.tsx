@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { Gamepad2, Trophy, Zap, Home, Brain, Calculator, BookOpen } from 'lucide-react';
+import { Gamepad2,  Calculator, BookOpen, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { SnakeGame } from '@/components/games/SnakeGame';
 import { MathGame } from '@/components/games/MathGame';
 import { WordGame } from '@/components/games/WordGame';
@@ -12,118 +13,129 @@ export const Route = createFileRoute('/games')({
 function GamesPage() {
   const [selectedGame, setSelectedGame] = useState<'snake' | 'math' | 'words' | null>(null);
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100 dark:from-gray-900 dark:via-orange-900 dark:to-red-900">
-      {/* Energetic Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-300/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-300/30 rounded-full blur-3xl animate-pulse delay-500"></div>
-        </div>
+  // If a game is selected, show the game view with a back button
+  if (selectedGame) {
+    return (
+      <div className="min-h-screen pt-24 pb-12 px-4 max-w-7xl mx-auto">
+        <button 
+          onClick={() => setSelectedGame(null)}
+          className="mb-8 flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-colors backdrop-blur-md"
+        >
+          <ArrowLeft className="w-5 h-5" /> Back to Arcade
+        </button>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center space-y-6">
-            <div className="flex justify-center gap-3 mb-4">
-              <Zap className="h-10 w-10 animate-bounce text-yellow-300" />
-              <Gamepad2 className="h-16 w-16 animate-pulse" />
-              <Zap className="h-10 w-10 animate-bounce delay-150 text-yellow-300" />
-            </div>
-            <h1 className="text-6xl md:text-7xl font-black tracking-tight drop-shadow-lg">
-              🎮 GAME ZONE 🎮
-            </h1>
-            <p className="text-2xl md:text-3xl font-bold text-yellow-100">
-              Learn & Play - Have Fun While Learning! ⚡
-            </p>
-            
-            {/* Navigation */}
-            <div className="flex flex-wrap justify-center gap-4 pt-4">
-              <Link
-                to="/resultss"
-                className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl transition-all hover:scale-105 font-bold"
-              >
-                <Trophy className="h-5 w-5" />
-                View Results
-              </Link>
-              <a
-                href="/"
-                className="flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl transition-all hover:scale-105 font-bold"
-              >
-                <Home className="h-5 w-5" />
-                Home
-              </a>
-            </div>
-          </div>
+        <div className="glass-card rounded-3xl p-8 min-h-[600px] border-white/10 shadow-2xl relative overflow-hidden">
+           {selectedGame === 'snake' && <SnakeGame onBack={() => setSelectedGame(null)} />}
+           {selectedGame === 'math' && <MathGame onBack={() => setSelectedGame(null)} />}
+           {selectedGame === 'words' && <WordGame onBack={() => setSelectedGame(null)} />}
         </div>
       </div>
+    );
+  }
 
-      {/* Game Selection or Game Play */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {!selectedGame ? (
-          <div className="space-y-8">
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                Choose Your Game! 🎯
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                Pick a game and start learning while having fun!
-              </p>
-            </div>
-
-            {/* Game Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Snake Game */}
-              <button
-                onClick={() => setSelectedGame('snake')}
-                className="group bg-gradient-to-br from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all hover:scale-105 text-left"
-              >
-                <Gamepad2 className="h-16 w-16 text-white mb-4 group-hover:animate-bounce" />
-                <h3 className="text-3xl font-black text-white mb-2">Snake Game</h3>
-                <p className="text-green-100 mb-4">Classic snake game for hand-eye coordination!</p>
-                <div className="flex items-center gap-2 text-yellow-300 font-bold">
-                  <Trophy className="h-5 w-5" />
-                  <span>Fun & Focus</span>
-                </div>
-              </button>
-
-              {/* Math Quiz */}
-              <button
-                onClick={() => setSelectedGame('math')}
-                className="group bg-gradient-to-br from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all hover:scale-105 text-left"
-              >
-                <Calculator className="h-16 w-16 text-white mb-4 group-hover:animate-bounce" />
-                <h3 className="text-3xl font-black text-white mb-2">Math Challenge</h3>
-                <p className="text-blue-100 mb-4">Solve math problems and improve your skills!</p>
-                <div className="flex items-center gap-2 text-yellow-300 font-bold">
-                  <Brain className="h-5 w-5" />
-                  <span>Learn Math</span>
-                </div>
-              </button>
-
-              {/* Word Scramble */}
-              <button
-                onClick={() => setSelectedGame('words')}
-                className="group bg-gradient-to-br from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all hover:scale-105 text-left"
-              >
-                <BookOpen className="h-16 w-16 text-white mb-4 group-hover:animate-bounce" />
-                <h3 className="text-3xl font-black text-white mb-2">Word Scramble</h3>
-                <p className="text-pink-100 mb-4">Unscramble words and boost vocabulary!</p>
-                <div className="flex items-center gap-2 text-yellow-300 font-bold">
-                  <Zap className="h-5 w-5" />
-                  <span>Learn Words</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        ) : selectedGame === 'snake' ? (
-          <SnakeGame onBack={() => setSelectedGame(null)} />
-        ) : selectedGame === 'math' ? (
-          <MathGame onBack={() => setSelectedGame(null)} />
-        ) : (
-          <WordGame onBack={() => setSelectedGame(null)} />
-        )}
+  // Dashboard View
+  return (
+    <div className="min-h-screen pt-32 pb-20 px-4">
+      
+      {/* Hero Header */}
+      <div className="text-center space-y-6 mb-20 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold tracking-widest uppercase mb-4"
+        >
+          <Gamepad2 className="w-4 h-4" />
+          <span>Student Arcade</span>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-6xl md:text-8xl font-black tracking-tighter text-white drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]"
+        >
+          GAME <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">ZONE</span>
+        </motion.h1>
+        
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          Level up your skills. Select a challenge to begin.
+        </p>
       </div>
+
+      {/* Game Cards Grid */}
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        
+        {/* Snake Card */}
+        <GameCard 
+          title="Neon Snake"
+          desc="Reflexes & Strategy"
+          icon={<Gamepad2 className="w-12 h-12 text-green-400" />}
+          gradient="group-hover:from-green-500/20 group-hover:to-emerald-500/20"
+          borderColor="group-hover:border-green-500/50"
+          onClick={() => setSelectedGame('snake')}
+        />
+
+        {/* Math Card */}
+        <GameCard 
+          title="Cyber Math"
+          desc="Logic & Calculation"
+          icon={<Calculator className="w-12 h-12 text-blue-400" />}
+          gradient="group-hover:from-blue-500/20 group-hover:to-cyan-500/20"
+          borderColor="group-hover:border-blue-500/50"
+          onClick={() => setSelectedGame('math')}
+        />
+
+        {/* Word Card */}
+        <GameCard 
+          title="Word Matrix"
+          desc="Vocabulary & Speed"
+          icon={<BookOpen className="w-12 h-12 text-pink-400" />}
+          gradient="group-hover:from-pink-500/20 group-hover:to-rose-500/20"
+          borderColor="group-hover:border-pink-500/50"
+          onClick={() => setSelectedGame('words')}
+        />
+
+      </div>
+      
+      {/* High Scores Link */}
+      {/* <div className="text-center mt-16">
+         <Link 
+            to="/resultss"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-white hover:bg-white/10 transition-colors backdrop-blur-md group"
+         >
+            <Trophy className="w-5 h-5 text-yellow-500 group-hover:animate-bounce" />
+            <span className="font-bold tracking-wide">View Leaderboards</span>
+         </Link>
+      </div> */}
+
     </div>
   );
+}
+
+function GameCard({ title, desc, icon, gradient, borderColor, onClick }: any) {
+  return (
+    <motion.button
+      whileHover={{ y: -10, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      className={`relative group w-full text-left p-8 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-colors ${borderColor}`}
+    >
+      <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-transparent ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      
+      <div className="relative z-10 space-y-6">
+        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+          {icon}
+        </div>
+        
+        <div>
+           <h3 className="text-3xl font-black text-white mb-2">{title}</h3>
+           <p className="text-gray-400 font-medium">{desc}</p>
+        </div>
+        
+        <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/50 group-hover:text-white transition-colors">
+           <span>Play Now</span>
+           <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-2 transition-transform" />
+        </div>
+      </div>
+    </motion.button>
+  )
 }

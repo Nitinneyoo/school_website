@@ -1,1 +1,0 @@
-import{r as n,j as o,O as r}from"./index-CB3QESB1.js";import{P as a}from"./ProtectedRoute-DcUKtdGI.js";const i=function(){return n.useEffect(()=>{const e=t=>{t.preventDefault(),t.returnValue=""};return window.addEventListener("beforeunload",e),()=>window.removeEventListener("beforeunload",e)},[]),o.jsx(a,{allowedRoles:["admin"],children:o.jsx(r,{})})};export{i as component};

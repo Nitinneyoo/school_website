@@ -3,6 +3,7 @@ import { MoreVertical, Power, Mail, Trash2, Activity } from 'lucide-react';
 import { updateUserStatus, deleteUserProfile } from '../../services/userService';
 import { resetTeacherPassword } from '../../services/authService';
 import type { UserProfile } from '../../types';
+import { toast } from 'sonner';
 
 interface TeacherActionsProps {
   teacher: UserProfile;
@@ -18,9 +19,17 @@ export function TeacherActions({ teacher, onRefresh, onShowActivities }: Teacher
     setLoading(true);
     const result = await updateUserStatus(teacher.uid, !teacher.isActive);
     if (result.success) {
+      toast.success(
+        teacher.isActive ? 'Teacher account disabled' : 'Teacher account enabled',
+        {
+          description: `${teacher.name}'s account has been ${teacher.isActive ? 'disabled' : 'enabled'} successfully.`,
+        }
+      );
       onRefresh();
     } else {
-      alert(result.error || 'Failed to update status');
+      toast.error('Failed to update status', {
+        description: result.error || 'Please try again.',
+      });
     }
     setLoading(false);
     setShowMenu(false);
@@ -31,9 +40,13 @@ export function TeacherActions({ teacher, onRefresh, onShowActivities }: Teacher
       setLoading(true);
       const result = await resetTeacherPassword(teacher.email);
       if (result.success) {
-        alert('Password reset email sent successfully!');
+        toast.success('Password reset email sent!', {
+          description: `A password reset link has been sent to ${teacher.email}.`,
+        });
       } else {
-        alert(result.error || 'Failed to send reset email');
+        toast.error('Failed to send reset email', {
+          description: result.error || 'Please try again.',
+        });
       }
       setLoading(false);
       setShowMenu(false);
@@ -45,10 +58,14 @@ export function TeacherActions({ teacher, onRefresh, onShowActivities }: Teacher
       setLoading(true);
       const result = await deleteUserProfile(teacher.uid);
       if (result.success) {
-        alert('Teacher deleted successfully');
+        toast.success('Teacher deleted successfully', {
+          description: `${teacher.name} has been removed from the system.`,
+        });
         onRefresh();
       } else {
-        alert(result.error || 'Failed to delete teacher');
+        toast.error('Failed to delete teacher', {
+          description: result.error || 'Please try again.',
+        });
       }
       setLoading(false);
       setShowMenu(false);

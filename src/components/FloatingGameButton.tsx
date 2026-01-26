@@ -17,7 +17,7 @@ export function FloatingGameButton() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 group">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group">
       {/* Close button */}
       <button
         onClick={() => setIsVisible(false)}
@@ -30,14 +30,14 @@ export function FloatingGameButton() {
       {/* Game button */}
       <Link
         to="/games"
-        className="relative flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-bounce-slow"
+        className="relative flex items-center gap-2 md:gap-3 px-4 py-3 md:px-6 md:py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-bounce-slow"
       >
         {/* Glow effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
         
-        <div className="relative flex items-center gap-3">
-          <Gamepad2 className="h-6 w-6 animate-pulse" />
-          <span className="font-black text-lg whitespace-nowrap">
+        <div className="relative flex items-center gap-2 md:gap-3">
+          <Gamepad2 className="h-5 w-5 md:h-6 md:w-6 animate-pulse" />
+          <span className="font-bold text-sm md:font-black md:text-lg whitespace-nowrap">
             Play Games! 🎮
           </span>
         </div>

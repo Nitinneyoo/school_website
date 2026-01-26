@@ -70,10 +70,10 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-slate-400" />
-                <span className="text-gray-400">Ambedkar nagar baghedi chaKGHAT DIST REWA MP</span>
+                <span className="text-gray-400">Ambedkar Nagar Baghedi Chakghat Dist. Rewa (M.P.)</span>
               </div>
             </div>
-          </div>
+          </div>  
 
           <div>
             <h3 className="text-lg font-semibold mb-4">School Hours</h3>

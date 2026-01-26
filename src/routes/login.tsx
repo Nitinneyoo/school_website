@@ -1,6 +1,9 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState, FormEvent, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { motion } from 'framer-motion';
+import { User, Lock, ArrowLeft, School, Eye, EyeOff } from 'lucide-react';
+import { toast } from 'sonner';
 
 export const Route = createFileRoute('/login')({
   component: LoginPage,
@@ -14,6 +17,7 @@ function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   // Check for teacher creation success
   useEffect(() => {
@@ -40,90 +44,110 @@ function LoginPage() {
     const result = await signIn(email, password);
 
     if (result.success) {
+      toast.success('Login successful!', {
+        description: 'Welcome back to your dashboard.',
+      });
       // Wait for auth state to update, then navigate will happen automatically
       // The redirect logic above will kick in once role is updated
     } else {
       setError(result.error || 'Login failed. Please try again.');
+      toast.error('Login failed', {
+        description: result.error || 'Please check your credentials and try again.',
+      });
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      {/* Background Ambience handled by __root.tsx, but we can add specific glow */}
+      <div className="absolute inset-0 bg-blue-500/5 pointer-events-none" />
+      
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        className="w-full max-w-md relative z-10"
+      >
         {/* Logo/Header */}
         <div className="text-center mb-8 space-y-2">
-          <div className="text-5xl mb-4">🏫</div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Model Middle School
+          <motion.div 
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring" }}
+            className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl mb-6 transform rotate-3"
+          >
+             <School className="w-10 h-10 text-white" />
+          </motion.div>
+          <h1 className="text-4xl font-black text-white tracking-tight">
+            Welcome Back
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Admin & Teacher Login
+          <p className="text-gray-400">
+            Sign in to access your portal
           </p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 space-y-6">
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-              Welcome Back
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Sign in to access your dashboard
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="glass-card rounded-3xl p-8 border-white/10 shadow-2xl backdrop-blur-xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            
             {/* Email Field */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-bold text-gray-300 ml-1">
                 Email Address
               </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="you@example.com"
-                disabled={loading}
-              />
+              <div className="relative group">
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all group-hover:bg-white/10"
+                  placeholder="admin@school.com"
+                  disabled={loading}
+                />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
+              </div>
             </div>
 
             {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
+            <div className="space-y-2">
+              <label htmlFor="password" className="block text-sm font-bold text-gray-300 ml-1">
                 Password
               </label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                placeholder="••••••••"
-                disabled={loading}
-              />
+              <div className="relative group">
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full pl-12 pr-12 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all group-hover:bg-white/10"
+                  placeholder="••••••••"
+                  disabled={loading}
+                />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-400 transition-colors focus:outline-none"
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
             </div>
 
-            {/* Success Message (Teacher Created) */}
+            {/* Success Message */}
             {successMessage && (
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 px-4 py-3 rounded-lg text-sm">
+              <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
                 {successMessage}
               </div>
             )}
 
             {/* Error Message */}
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg text-sm">
+              <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium text-center">
                 {error}
               </div>
             )}
@@ -132,37 +156,30 @@ function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {loading ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Signing in...
-                </>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Signing in...</span>
+                </div>
               ) : (
                 'Sign In'
               )}
             </button>
           </form>
-
-          {/* Footer */}
-          {/* <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-center text-gray-600 dark:text-gray-400">
-              Student? <a href="/resultss" className="text-blue-600 dark:text-blue-400 hover:underline">View Results</a>
-            </p>
-          </div> */}
         </div>
 
-        {/* Back to Home */}
-        <div className="text-center mt-6">
+        {/* Back Link */}
+        <div className="text-center mt-8">
           <a
             href="/"
-            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors"
           >
-            ← Back to Home
+            <ArrowLeft className="w-4 h-4" /> Back to Home
           </a>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

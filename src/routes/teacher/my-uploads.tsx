@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect, useCallback } from 'react';
-import { FileText, Download, Trash2, Search } from 'lucide-react';
+import { FileText, Download, Trash2, Search, Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 import { getResultsByTeacher, deleteResult } from '../../services/resultsService';
 import { logActivity } from '../../services/userService';
@@ -66,128 +67,158 @@ function MyUploadsPage() {
   const uniqueSubjects = Array.from(new Set(uploads.map((u) => u.subject))).sort();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen pt-32 pb-20 px-4">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <BackButton to="/teacher" label="Back to Dashboard" />
-          <div className="flex items-center gap-3 mt-4">
-            <FileText className="h-8 w-8 text-teal-600" />
-            <h1 className="text-3xl font-bold text-gray-900">My Uploads</h1>
+      <div className="max-w-7xl mx-auto mb-8">
+        <BackButton to="/teacher" label="Back to Dashboard" />
+        
+        <div className="flex items-center gap-4 mt-8">
+          <motion.div 
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="p-3 rounded-2xl bg-teal-500/20 border border-teal-500/30"
+          >
+            <FileText className="h-8 w-8 text-teal-400" />
+          </motion.div>
+          <div>
+            <motion.h1 
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              className="text-4xl font-black text-white tracking-tight"
+            >
+              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Uploads</span>
+            </motion.h1>
+            <p className="text-gray-400 mt-1">Manage your uploaded results and files</p>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto">
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="glass-card p-4 mb-8"
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search files..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-teal-500/50 focus:bg-white/10 transition-all"
               />
             </div>
 
             {/* Class Filter */}
-            <select
-              value={filterClass}
-              onChange={(e) => setFilterClass(e.target.value ? Number(e.target.value) : '')}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-            >
-              <option value="">All Classes</option>
-              {uniqueClasses.map((cls) => (
-                <option key={cls} value={cls}>
-                  Class {cls}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+               <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <select
+                value={filterClass}
+                onChange={(e) => setFilterClass(e.target.value ? Number(e.target.value) : '')}
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-teal-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
+              >
+                <option value="" className="bg-gray-900">All Classes</option>
+                {uniqueClasses.map((cls) => (
+                  <option key={cls} value={cls} className="bg-gray-900">
+                    Class {cls}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {/* Subject Filter */}
-            <select
-              value={filterSubject}
-              onChange={(e) => setFilterSubject(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-            >
-              <option value="">All Subjects</option>
-              {uniqueSubjects.map((subject) => (
-                <option key={subject} value={subject}>
-                  {subject}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <FileText className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <select
+                value={filterSubject}
+                onChange={(e) => setFilterSubject(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-teal-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
+              >
+                <option value="" className="bg-gray-900">All Subjects</option>
+                {uniqueSubjects.map((subject) => (
+                  <option key={subject} value={subject} className="bg-gray-900">
+                    {subject}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Uploads List */}
         {loading ? (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <div className="w-16 h-16 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading uploads...</p>
+          <div className="glass-card p-12 text-center">
+            <div className="w-16 h-16 border-4 border-teal-500/30 border-t-teal-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-400">Loading uploads...</p>
           </div>
         ) : filteredUploads.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600 text-lg">
+          <div className="glass-card p-12 text-center">
+            <FileText className="h-16 w-16 text-gray-600 mx-auto mb-4" />
+            <p className="text-gray-300 text-lg font-medium">
               {uploads.length === 0 ? 'No uploads yet' : 'No uploads match your filters'}
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredUploads.map((upload) => (
-              <div
-                key={upload.id}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-teal-100 p-3 rounded-lg flex-shrink-0">
-                    <FileText className="h-8 w-8 text-teal-600" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 truncate" title={upload.fileName}>
-                      {upload.fileName}
-                    </h3>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full font-medium">
-                        Class {upload.class}
-                      </span>
-                      <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
-                        {upload.subject}
-                      </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence>
+              {filteredUploads.map((upload, index) => (
+                <motion.div
+                  key={upload.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="glass-card p-6 group hover:border-white/20 transition-all"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="bg-teal-500/20 p-3 rounded-xl flex-shrink-0 text-teal-400 group-hover:bg-teal-500/30 transition-colors">
+                      <FileText className="h-8 w-8" />
                     </div>
-                    <p className="text-xs text-gray-500 mt-3">
-                      {upload.uploadedAt?.toLocaleDateString()}
-                    </p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-white truncate text-lg" title={upload.fileName}>
+                        {upload.fileName}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="px-2.5 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs rounded-lg font-medium">
+                          Class {upload.class}
+                        </span>
+                        <span className="px-2.5 py-1 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs rounded-lg font-medium">
+                          {upload.subject}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-4 font-mono">
+                        Uploaded on {upload.uploadedAt?.toLocaleDateString()}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Actions */}
-                <div className="flex gap-2 mt-4 pt-4 border-t">
-                  <a
-                    href={upload.fileURL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm font-medium"
-                  >
-                    <Download className="h-4 w-4" />
-                    Download
-                  </a>
-                  <button
-                    onClick={() => handleDelete(upload)}
-                    className="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors"
-                    title="Delete"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
+                  {/* Actions */}
+                  <div className="flex gap-3 mt-6 pt-4 border-t border-white/5">
+                    <a
+                      href={upload.fileURL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-500/20 text-teal-300 border border-teal-500/30 rounded-xl hover:bg-teal-500/30 transition-all font-bold text-sm"
+                    >
+                      <Download className="h-4 w-4" />
+                      Download
+                    </a>
+                    <button
+                      onClick={() => handleDelete(upload)}
+                      className="p-2.5 bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl hover:bg-red-500/30 transition-all"
+                      title="Delete"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         )}
       </div>
