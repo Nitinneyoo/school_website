@@ -3,7 +3,7 @@ import { FileText, CheckCircle, Download, Trophy, Users, Sparkles } from 'lucide
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ApplyModal } from '../components/ApplyModal';
-import { RepublicDayBanner } from '../components/RepublicDayBanner';
+// import { RepublicDayBanner } from '../components/RepublicDayBanner';
 
 export const Route = createFileRoute('/admissions')({
   component: AdmissionsPage,
@@ -32,7 +32,7 @@ function AdmissionsPage() {
   return (
     <div className="min-h-screen pt-32 pb-20 px-4">
       {/* 🇮🇳 REPUBLIC DAY MINIMAL BACKGROUND - Automatically shows on January 26th */}
-      <RepublicDayBanner variant="minimal" />
+      {/* <RepublicDayBanner variant="minimal" /> */}
       
       <ApplyModal isOpen={isApplyModalOpen} onClose={() => setIsApplyModalOpen(false)} />
       

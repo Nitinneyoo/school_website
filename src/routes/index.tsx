@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
 import { ArrowRight, Trophy, Sparkles, Rocket, Brain } from 'lucide-react';
-import { RepublicDayBanner } from '../components/RepublicDayBanner';
+// import { RepublicDayBanner } from '../components/RepublicDayBanner';
 import { memo, ReactNode } from 'react';
 // import { MacbookScroll } from '../components/ui/macbook-scroll';
+import { BoardToppers } from '../components/BoardToppers';
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -13,11 +14,7 @@ function Home() {
   return (
     <div className="space-y-32 pb-28">
       
-      {/* 🇮🇳 REPUBLIC DAY BANNER - Automatically shows on January 26th 
-          To manually enable/disable, uncomment the line below.
-          The component checks the date automatically and only displays on Jan 26.
-      */}
-      <RepublicDayBanner variant="hero" />
+      {/* <RepublicDayBanner variant="hero" /> */}
       
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
@@ -177,6 +174,9 @@ function Home() {
             <StatItem value="25+" label="Global Awards" />
          </div>
       </section>
+
+      {/* Board Toppers Section */}
+      <BoardToppers showViewAllButton={true} />
 
       {/* CTA Section */}
       <section className="px-4 text-center">

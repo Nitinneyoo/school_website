@@ -4,6 +4,7 @@ import { FileText, Download, Eye, Sparkles, Trophy, Gamepad2, ArrowLeft, Search 
 import { motion, AnimatePresence } from 'framer-motion';
 import { getResultsByClass } from '../services/resultsService';
 import type { Result } from '../types';
+import { BoardToppers } from '../components/BoardToppers';
 
 export const Route = createFileRoute('/resultss')({
   component: ResultsPage,
@@ -79,6 +80,13 @@ function ResultsPage() {
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             View academic performance and download report cards.
           </p>
+        </div>
+      )}
+
+      {/* Board Toppers Section */}
+      {!selectedClass && (
+        <div className="mb-20">
+          <BoardToppers showViewAllButton={false} />
         </div>
       )}
 

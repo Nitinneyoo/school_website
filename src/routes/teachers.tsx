@@ -22,97 +22,105 @@ const headmaster = {
 }
 
 const teachers = [
+   {
+  id: 1,
+  name: "Suneeta Singh",
+  subject: "Early Childhood Education",
+  image: "/teachers/suneeta_singh.jpg",
+  role: "LKG & UKG Class Teacher",
+  bio: "Ms. Suneeta Singh is a gentle guide and a caring mentor for our youngest learners. Like a mother at school, she patiently teaches children how to speak, behave, share, and express themselves with confidence. Through stories, play, and daily activities, she nurtures curiosity, discipline, and emotional growth, helping each child feel safe, loved, and excited to learn.",
+  stats: {
+    experience: "10 Years",
+    classes: "LKG & UKG (All Subjects)",
+    rating: "5.0/5" 
+  },
+  color: "from-pink-400 via-rose-400 to-orange-300"
+},
   
   {
-    id: 1,
+    id: 2,
     name: "Mr. Devendra Singh",
     subject: "Hindi Literature",
-    image: "/teachers/literature_teacher.png",
+    image: "/teachers/devendra_sir.png",
     role: "Literary Society Head",
     bio: "With dedication and cultural wisdom, you nurture students by strengthening their language, values, and expression. Through literature and language, you connect tradition with modern thinking and help students develop clarity, confidence, and respect for their roots.",
     stats: { experience: "22 Years", classes: "English 8-10", rating: "4.9/5" },
     color: "from-stone-500 via-neutral-500 to-gray-500"
   },
   {
-    id: 2,
+    id: 3,
     name: "Mr. Kamlesh Kushwaha",
     subject: "Mathematics & English",
-    image: "/teachers/science_teacher.png",
+    image: "/teachers/kamlesh_sir.png",
     role: "Head of Mathematics",
     bio: "Kamlesh Kushwaha brings numbers to life with her unconventional teaching methods.With dedication, patience, and passion, you inspire young minds to think clearly, communicate confidently, and grow into responsible individuals. Through numbers and words, you shape understanding, build character, and lay the foundation for a brighter future.",
     stats: { experience: "15 Years", classes: "Math 6-10", rating: "4.9/5" },
     color: "from-pink-500 via-rose-500 to-red-500"
   },
   {
-    id: 3,
+    id: 4,
     name: "Brijesh Manjhi",
     subject: "Science",
-    image: "/teachers/science_teacher.png",
+    image: "/teachers/brijesh_sir.png",
     role: "Science Department Lead",
     bio: "Turning the classroom into a laboratory of wonder. Brijesh Manjhi's classes are known for explosive experiments and deep dives into the quantum realm. He inspires curiosity about how the universe works, one atom at a time.",
     stats: { experience: "15 Years", classes: "Science 5-10", rating: "4.95/5" },
     color: "from-blue-400 via-cyan-400 to-teal-400"
   },
   {
-    id: 4,
-    name: "Ms. Elena Rodriguez",
+    id: 5,
+    name: "Ms. Riya Manjhi",
+    subject: "Computer Science",
+    image: "/teachers/riya.png",
+    role: "Tech Innovation Lead",
+    bio: "Ms. Riya Manjhi is preparing students for a world that doesn't exist yet. From coding AIs to building robots, his lab is where the future is prototyped. He challenges students to think primarily in logic, but ultimately in possibilities.",
+    stats: { experience: "6 Years", classes: "CS 1-06", rating: "5.0/5" },
+    color: "from-cyan-500 via-blue-500 to-indigo-500"
+  },
+  {
+    id: 6,
+    name: "Ms. Komal Soni",
     subject: "Visual Arts & Design",
-    image: "/teachers/art_teacher.png",
+    image: "/teachers/komal.png",
     role: "Creative Director",
     bio: "Ms. Rodriguez sees the world in colors and shapes. Her studio is a sanctuary for expression. With a background in gallery curation, she helps students find their unique artistic voice and turn abstract ideas into masterpieces.",
     stats: { experience: "15 Years", classes: "Art & Media", rating: "5.0/5" },
     color: "from-violet-500 via-purple-500 to-indigo-500"
   },
   {
-    id: 5,
-    name: "Mr. Arthur Pendelton",
-    subject: "Social Science",
-    image: "/teachers/history_teacher.png",
-    role: "Senior Historian",
-    bio: "Walking into Mr. Pendelton's class is like stepping into a time machine. With his storytelling, ancient empires rise and fall right before your eyes. He teaches us that to understand the future, we must first understand our past.",
-    stats: { experience: "5 Years", classes: "Social Science 7-10", rating: "4.8/5" },
-    color: "from-amber-700 via-orange-700 to-brown-700"
-  },
-  {
-    id: 6,
-    name: "Coach Marcus Jordan",
-    subject: "Physical Education",
-    image: "/teachers/sports_teacher.png",
-    role: "Athletic Director",
-    bio: "Coach Jordan doesn't just build athletes; he builds character. Former Olympic qualifier, he brings elite discipline and boundless energy to the field. He believes that a healthy body is the foundation for a sharp mind.",
-    stats: { experience: "10 Years", classes: "PE All Grades", rating: "5.0/5" },
-    color: "from-emerald-500 via-green-500 to-lime-500"
-  },
-  {
     id: 7,
-    name: "Ms. Clara Beaux",
-    subject: "Music & Performing Arts",
-    image: "/teachers/music_teacher.png",
-    role: "Orchestra Conductor",
-    bio: "A virtuoso violinist who treats every class like a symphony. Ms. Beaux helps students find rhythm in chaos and melody in silence. Under her baton, the school orchestra has won three national championships.",
-    stats: { experience: "18 Years", classes: "Music 1-10", rating: "5.0/5" },
-    color: "from-fuchsia-600 via-purple-600 to-pink-600"
-  },
-  {
-    id: 8,
-    name: "Mrs. Beatrice Woolf",
+    name: "Ms. Anshu Singh",
     subject: "English Literature",
-    image: "/teachers/literature_teacher.png",
+    image: "/teachers/anshu.jpg",
     role: "Literary Society Head",
     bio: "Mrs. Woolf's classroom smells of old books and fresh coffee. She inspires a deep love for the written word, guiding students through the complexities of Shakespeare and the modern voice of poetry alike.",
     stats: { experience: "22 Years", classes: "English 8-10", rating: "4.9/5" },
     color: "from-stone-500 via-neutral-500 to-gray-500"
   },
   {
+    id: 8,
+    name: "Mrs. Manju Manjhi",
+    subject: "Social Science",
+    image: "/teachers/manju.jpg",
+    role: "Senior Historian",
+    bio: "Walking into Manju Ma'am's class is like stepping into a time machine. With her storytelling, ancient empires rise and fall right before your eyes. She teaches us that to understand the future, we must first understand our past.",
+    stats: { experience: "5 Years", classes: "Social Science 7-10", rating: "4.8/5" },
+    color: "from-amber-700 via-orange-700 to-brown-700"
+  },
+ 
+  {
     id: 9,
-    name: "Ms. Riya Manjhi",
-    subject: "Computer Science",
-    image: "/teachers/cs_teacher.png",
-    role: "Tech Innovation Lead",
-    bio: "Ms. Riya Manjhi is preparing students for a world that doesn't exist yet. From coding AIs to building robots, his lab is where the future is prototyped. He challenges students to think primarily in logic, but ultimately in possibilities.",
-    stats: { experience: "6 Years", classes: "CS 1-06", rating: "5.0/5" },
-    color: "from-cyan-500 via-blue-500 to-indigo-500"
-  }
+    name: "Mrs. Pooja Kumari",
+    subject: "Music & Performing Arts",
+    image: "/teachers/pooja.png",
+    role: "Orchestra Conductor",
+    bio: "A virtuoso violinist who treats every class like a symphony. Ms. Beaux helps students find rhythm in chaos and melody in silence. Under her baton, the school orchestra has won three national championships.",
+    stats: { experience: "18 Years", classes: "Music 1-10", rating: "5.0/5" },
+    color: "from-fuchsia-600 via-purple-600 to-pink-600"
+  },
+  
+  
+  
 ];
 
 function TeachersPage() {
@@ -137,7 +145,7 @@ function TeachersPage() {
           
           <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-600 animate-in fade-in zoom-in duration-1000">
             OUR <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-amber-500">MENTORS</span>
+            <span className="text-transparent bg-clip-text b-gradient-to-r from-yellow-300 via-orange-400 to-amber-500">MENTORS</span>
           </h1>
           
           <p className="max-w-xl mx-auto text-xl text-gray-400 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 delay-300 duration-1000">
@@ -239,7 +247,7 @@ function TeacherSection({ teacher, index }: { teacher: typeof teachers[0], index
       <div className="flex-1 w-full relative group">
         <div className={`absolute inset-0 bg-gradient-to-br ${teacher.color} rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700`} />
         
-        <div className="relative h-[600px] w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
+        <div className="relative h-[800px] w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
           <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10`} />
           <img 
             src={teacher.image} 
