@@ -1,1 +1,0 @@
-import{j as o,O as r}from"./vendor-router-fAM80Ws7.js";import{P as t}from"./ProtectedRoute-CjWMnbRI.js";import"./vendor-react-HnKmhvXM.js";import"./index-CIf3Rfvc.js";import"./vendor-ui-CasoyLD2.js";import"./vendor-animations-C3B6sSUk.js";const e=function(){return o.jsx(t,{allowedRoles:["admin"],children:o.jsx(r,{})})};export{e as component};
